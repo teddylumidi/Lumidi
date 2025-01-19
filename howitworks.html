@@ -1,3 +1,14 @@
+Your HTML code does not have any syntax errors. 
+
+Here are a few improvements for better readability and maintainability:
+
+1. Use semantic HTML elements for better accessibility.
+2. Ensure consistent indentation.
+3. Remove unnecessary comments and redundant attributes.
+
+Here's the corrected version of your HTML:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +36,6 @@
     gtag('js', new Date());
     gtag('config', 'G-KHDYR7PQ7X');
 
-    // Update this code to reflect your party URL
     const partyUrl = 'https://www.teddylumidi.com/party';
 
     gtag('event', 'party_view', {
@@ -37,7 +47,7 @@
 
 <body>
   <!-- Hero Section Start -->
-  <div class="hero">
+  <header class="hero">
     <nav class="navbar navbar-expand-lg container">
       <a class="navbar-brand" id="logo" href="#">Teddy<span>Lumidi</span></a>
       <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -66,7 +76,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </header>
 
   <!-- About section start -->
   <section class="about" id="about">
@@ -91,7 +101,7 @@
   </section>
 
   <!-- Services section start -->
-  <div class="service" id="how-it-works">
+  <section class="service" id="how-it-works">
     <div class="title">
       <h2>How Referral Links Work</h2>
     </div>
@@ -133,13 +143,13 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Contact Me section start -->
-  <div class="contact-me" id="contact">
+  <section class="contact-me" id="contact">
     <p>Deals that pay off</p>
     <a class="button-two" href="referrallink.html" target="_blank">Paying Links</a>
-  </div>
+  </section>
 
   <!-- Footer section start -->
   <footer>
@@ -162,3 +172,6 @@
 </body>
 
 </html>
+```
+
+You can copy and paste this corrected HTML code back into your repository.
