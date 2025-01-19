@@ -1,3 +1,14 @@
+Your HTML file does not have any syntax errors. Here are some suggestions to make it more mobile-friendly:
+
+1. Ensure viewport meta tag is set correctly (already done in your code).
+2. Use responsive Bootstrap classes:
+   - Add `container-fluid` class to your `div` with class `hero` for full-width responsiveness.
+   - Use `col-xs-*`, `col-sm-*`, `col-md-*`, and `col-lg-*` classes to define column sizes for different screen sizes.
+3. Test the responsiveness of the `navbar`, `hero`, and other sections.
+
+Here's an updated version of your HTML with these suggestions:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +31,7 @@
 <body>
 
   <!-- Hero Section Start -->
-  <div class="hero" id="home">
+  <div class="hero container-fluid" id="home">
     <nav class="navbar navbar-expand-lg container">
       <a href="#" class="navbar-brand" id="logo">Teddy<span>Lumidi</span></a>
       <button class="navbar-toggler custom-toggler ms-auto" type="button" data-bs-toggle="collapse"
@@ -50,52 +61,54 @@
   </div>
 
   <!-- Services Section Start -->
-  <div class="service" id="services">
+  <div class="service container-fluid" id="services">
     <div class="title">
       <h2>My Services</h2>
     </div>
-    <div class="box">
-      <div class="card">
-        <em class="fas fa-user-secret"></em>
-        <h5>Creator</h5>
-        <div class="pra">
-          <p class="py-3">I deliver splendid web apps and IT solutions and related services across the globe.</p>
-          <p class="py-2 text-center">
-            <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read
-              More</a>
-          </p>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+          <em class="fas fa-user-secret"></em>
+          <h5>Creator</h5>
+          <div class="pra">
+            <p class="py-3">I deliver splendid web apps and IT solutions and related services across the globe.</p>
+            <p class="py-2 text-center">
+              <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read More</a>
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <em class="fas fa-keyboard"></em>
-        <h5>Designer</h5>
-        <div class="pra">
-          <p class="py-3">I offer design services with visual and textual content to our clients around the world.</p>
-          <p class="py-2 text-center">
-            <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read
-              More</a>
-          </p>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+          <em class="fas fa-keyboard"></em>
+          <h5>Designer</h5>
+          <div class="pra">
+            <p class="py-3">I offer design services with visual and textual content to our clients around the world.</p>
+            <p class="py-2 text-center">
+              <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read More</a>
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <em class="fas fa-user-secret"></em>
-        <h5>Developer</h5>
-        <div class="pra">
-          <p class="py-3">I offer competitive digital development services, market research, and campaigns.</p>
-          <p class="py-2 text-center">
-            <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read
-              More</a>
-          </p>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+          <em class="fas fa-user-secret"></em>
+          <h5>Developer</h5>
+          <div class="pra">
+            <p class="py-3">I offer competitive digital development services, market research, and campaigns.</p>
+            <p class="py-2 text-center">
+              <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read More</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Contact Me Section -->
-  <div class="contact-me" id="contact">
+  <div class="contact-me container-fluid" id="contact">
     <p>Let Me Get You a Great Service</p>
-    <a class="button-two" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Hire
-      Me</a>
+    <a class="button-two" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Hire Me</a>
   </div>
 
   <!-- Footer Start -->
@@ -133,3 +146,4 @@
 </body>
 
 </html>
+```
