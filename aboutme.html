@@ -2,128 +2,169 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="description" content="Lumidi website blog.">
-  <title>Teddy Lumidi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Learn about Teddy Lumidi, your trusted referral ambassador. Discover his services in web development, design, and digital solutions.">
+  <meta name="keywords" content="Teddy Lumidi, web developer, designer, referral ambassador, digital solutions">
+  <meta name="author" content="Teddy Lumidi">
+  <title>About Me - Teddy Lumidi</title>
+  
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <!-- Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Fontawesome -->
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-  <!-- Hero Section Start -->
-  <div class="hero container-fluid" id="home">
-    <nav class="navbar navbar-expand-lg container">
-      <a href="#" class="navbar-brand" id="logo">Teddy<span>Lumidi</span></a>
-      <button class="navbar-toggler custom-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li><a class="nav-link" href="#home">Home</a></li>
-          <li><a class="nav-link" href="#referral-link">Referral Link</a></li>
-          <li><a class="nav-link" href="#how-it-works">How It Works</a></li>
-          <li><a class="nav-link" href="#rewards">Rewards</a></li>
-          <li><a class="nav-link" href="#about-me">About Me</a></li>
-        </ul>
-        <a href="#" class="btn">Subscribe</a>
+  <!-- Hero Section -->
+  <header class="hero">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" aria-label="Teddy Lumidi Home">
+          Teddy<span>Lumidi</span>
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="referrallink.html">Referral Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="howitworks.html">How It Works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="rewards.html">Rewards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aboutme.html" aria-current="page">About Me</a>
+            </li>
+          </ul>
+          <a href="#newsletter" class="btn" aria-label="Subscribe to newsletter">Subscribe</a>
+        </div>
       </div>
     </nav>
-
-    <div class="content text-center">
+    
+    <div class="content">
       <h1>Teddy<span>Lumidi</span></h1>
-      <h3><span> My </span> Work <span> Portfolio</span></h3>
+      <h3><span>My</span> Work <span>Portfolio</span></h3>
       <div class="about-text">
-        <a class="btn btn-primary" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank" role="button">My Works</a>
+        <a class="btn" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank" rel="noopener noreferrer" role="button" aria-label="View Teddy Lumidi's portfolio">My Works</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Services Section Start -->
-  <div class="service container-fluid" id="services">
-    <div class="title">
-      <h2>My Services</h2>
-    </div>
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12">
+  <!-- Services Section -->
+  <section class="service" id="services">
+    <div class="container-fluid">
+      <div class="title">
+        <h2>My Services</h2>
+      </div>
+      <div class="box">
         <div class="card">
-          <em class="fas fa-user-secret"></em>
+          <em class="fas fa-code" aria-hidden="true"></em>
           <h5>Creator</h5>
           <div class="pra">
-            <p class="py-3">I deliver splendid web apps and IT solutions and related services across the globe.</p>
-            <p class="py-2 text-center">
-              <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read More</a>
-            </p>
+            <p>I deliver splendid web apps and IT solutions and related services across the globe. With expertise in modern technologies and frameworks, I create digital experiences that drive results and exceed expectations.</p>
+            <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about Teddy's creative services">Read More</a>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card">
-          <em class="fas fa-keyboard"></em>
+          <em class="fas fa-palette" aria-hidden="true"></em>
           <h5>Designer</h5>
           <div class="pra">
-            <p class="py-3">I offer design services with visual and textual content to our clients around the world.</p>
-            <p class="py-2 text-center">
-              <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read More</a>
-            </p>
+            <p>I offer design services with visual and textual content to our clients around the world. From user interface design to brand identity, I create compelling visual solutions that communicate effectively and engage audiences.</p>
+            <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about Teddy's design services">Read More</a>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card">
-          <em class="fas fa-user-secret"></em>
+          <em class="fas fa-laptop-code" aria-hidden="true"></em>
           <h5>Developer</h5>
           <div class="pra">
-            <p class="py-3">I offer competitive digital development services, market research, and campaigns.</p>
-            <p class="py-2 text-center">
-              <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Read More</a>
-            </p>
+            <p>I offer competitive digital development services, market research, and campaigns. Specializing in full-stack development, I build robust applications that scale and perform optimally across all platforms and devices.</p>
+            <a class="button" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about Teddy's development services">Read More</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Contact Me Section -->
-  <div class="contact-me container-fluid" id="contact">
-    <p>Let Me Get You a Great Service</p>
-    <a class="button-two" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank">Hire Me</a>
-  </div>
-
-  <!-- Footer Start -->
-  <footer>
-    <p>Teddy Lumidi</p>
-    <p>Follow me</p>
-    <div class="social">
-      <a href="https://web.facebook.com/lumidi254/" target="_blank"><i class="fab fa-facebook-square"></i></a>
-      <a href="https://www.instagram.com/teddylumidi/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://twitter.com/TeddyLumidi" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/teddylumidi/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.reddit.com/user/shivakala" target="_blank"><i class="fab fa-reddit"></i></a>
-      <a href="https://github.com/teddylumidi" target="_blank"><i class="fab fa-github-square"></i></a>
+  <section class="contact-me" id="contact">
+    <div class="container-fluid">
+      <p>Let Me Get You a Great Service</p>
+      <a class="button-two" href="https://teddylumidi.github.io/personal_portfolio-develop/" target="_blank" rel="noopener noreferrer" aria-label="Hire Teddy Lumidi">Hire Me</a>
     </div>
-    <p class="end">© 2023 Teddy Lumidi. All rights reserved.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container-fluid">
+      <p>Teddy Lumidi</p>
+      <p>Follow me on social media for updates and opportunities</p>
+      <div class="social">
+        <a href="https://web.facebook.com/lumidi254/" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/teddylumidi/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://twitter.com/TeddyLumidi" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/teddylumidi/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Teddy Lumidi on LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.reddit.com/user/shivakala" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Reddit">
+          <i class="fab fa-reddit" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/teddylumidi" target="_blank" rel="noopener noreferrer" aria-label="View Teddy Lumidi's GitHub profile">
+          <i class="fab fa-github-square" aria-hidden="true"></i>
+        </a>
+      </div>
+      <p class="end">© 2023 Teddy Lumidi. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <!-- Custom JavaScript -->
   <script>
-    // Smooth scrolling
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    for (const link of navLinks) {
-      link.addEventListener('click', smoothScroll);
-    }
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-    function smoothScroll(event) {
-      event.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Navbar collapse on link click (mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(navbarCollapse).hide();
+        }
+      });
+    });
   </script>
 </body>
 </html>

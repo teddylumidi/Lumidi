@@ -2,19 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="description" content="Teddy Lumidi - Referral Ambassador offering genuine, paying websites and referral programs. Start earning today with trusted links.">
+  <meta name="keywords" content="referral ambassador, earning opportunities, paid surveys, online income">
+  <meta name="author" content="Teddy Lumidi">
   <title>Teddy Lumidi Referral Ambassador</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/43361fe41f.js" crossorigin="anonymous"></script>
+  
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHDYR7PQ7X"></script>
-  <script type="text/javascript">
+  <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-KHDYR7PQ7X');
   </script>
@@ -24,29 +36,42 @@
   <header class="hero">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" id="logo" href="#" aria-label="Teddy Lumidi Home">Teddy<span>Lumidi</span></a>
+        <a class="navbar-brand" href="#" aria-label="Teddy Lumidi Home">
+          Teddy<span>Lumidi</span>
+        </a>
         <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="referrallink.html">Referral Link</a></li>
-            <li class="nav-item"><a class="nav-link" href="howitworks.html">How It Works</a></li>
-            <li class="nav-item"><a class="nav-link" href="rewards.html">Rewards</a></li>
-            <li class="nav-item"><a class="nav-link" href="aboutme.html">About Me</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="referrallink.html">Referral Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="howitworks.html">How It Works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="rewards.html">Rewards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aboutme.html">About Me</a>
+            </li>
           </ul>
           <a href="#newsletter" class="btn" aria-label="Subscribe to newsletter">Subscribe</a>
         </div>
       </div>
     </nav>
+    
     <div class="content">
       <h4>Hello World!!!</h4>
       <h1>Teddy<span>Lumidi</span></h1>
       <h3><span>Referral</span> | Ambassador</h3>
       <div class="newsletter" id="newsletter">
         <form action="#" method="post" aria-label="Newsletter subscription form">
-          <input type="email" name="email" id="mail" placeholder="Enter Your Email" required aria-label="Email address">
+          <input type="email" name="email" id="mail" placeholder="Enter Your Email" required aria-label="Email address" autocomplete="email">
           <input type="submit" name="submit" id="submit" value="Let's Start" aria-label="Subscribe to newsletter">
         </form>
       </div>
@@ -55,53 +80,49 @@
 
   <!-- About Section -->
   <section class="about" id="about">
-    <div class="main container">
+    <div class="main container-fluid">
       <div id="aboutme" class="text-center">
-        <img src="img/aboutme.jpeg" alt="Teddy Lumidi profile picture" width="450" height="450" loading="lazy">
+        <img src="img/aboutme.jpeg" alt="Teddy Lumidi profile picture" loading="lazy">
       </div>
       <div class="about-text">
         <h2>About Me</h2>
         <h5>Referral <span>Ambassador</span></h5>
         <p>As a referral ambassador, my goal is to create valuable relationships and provide opportunities for individuals like you to benefit from these outstanding offerings. I invite you to explore these opportunities and join me on this journey of mutual success and growth.</p>
-        <a class="btn btn-primary small-button" href="referrallink.html" role="button" aria-label="Start earning with referral links">Let's Start Here</a>
+        <a class="btn" href="referrallink.html" role="button" aria-label="Start earning with referral links">Let's Start Here</a>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
   <section class="service" id="services">
-    <div class="title text-center">
-      <h2>Referral Ambassador for Paid Services</h2>
-    </div>
-    <div class="box container">
-      <div class="card">
-        <em class="fa fa-user-secret" aria-hidden="true"></em>
-        <h5>Introduction</h5>
-        <div class="pra">
-          <p>With a fiery passion, I connect as a referral envoy, eager to engage. Firmly believing in the might of word-of-mouth magic, I wholeheartedly devote myself to championing genuine products and services.</p>
-          <p class="text-center">
-            <a class="button" href="referrallink.html" aria-label="Get paid through referral programs">Get Paid</a>
-          </p>
-        </div>
+    <div class="container-fluid">
+      <div class="title">
+        <h2>Referral Ambassador for Paid Services</h2>
       </div>
-      <div class="card">
-        <em class="fa fa-keyboard" aria-hidden="true"></em>
-        <h5>Purpose and Values</h5>
-        <div class="pra">
-          <p>My aim? To forge meaningful bonds, offering chances for you to reap the rewards. Proudly advocating quality and trust, I ensure endorsed products and services excel in delivering value.</p>
-          <p class="text-center">
+      <div class="box">
+        <div class="card">
+          <em class="fa fa-user-secret" aria-hidden="true"></em>
+          <h5>Introduction</h5>
+          <div class="pra">
+            <p>With a fiery passion, I connect as a referral envoy, eager to engage. Firmly believing in the might of word-of-mouth magic, I wholeheartedly devote myself to championing genuine products and services.</p>
             <a class="button" href="referrallink.html" aria-label="Get paid through referral programs">Get Paid</a>
-          </p>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <em class="fa fa-handshake" aria-hidden="true"></em>
-        <h5>Collaboration</h5>
-        <div class="pra">
-          <p>Let's collaborate to create a better future. We'll share our mission and discover new possibilities. Join my realm, where the referral program awaits, ready to take you to new heights of success.</p>
-          <p class="text-center">
+        <div class="card">
+          <em class="fa fa-keyboard" aria-hidden="true"></em>
+          <h5>Purpose and Values</h5>
+          <div class="pra">
+            <p>My aim? To forge meaningful bonds, offering chances for you to reap the rewards. Proudly advocating quality and trust, I ensure endorsed products and services excel in delivering value.</p>
             <a class="button" href="referrallink.html" aria-label="Get paid through referral programs">Get Paid</a>
-          </p>
+          </div>
+        </div>
+        <div class="card">
+          <em class="fa fa-handshake" aria-hidden="true"></em>
+          <h5>Collaboration</h5>
+          <div class="pra">
+            <p>Let's collaborate to create a better future. We'll share our mission and discover new possibilities. Join my realm, where the referral program awaits, ready to take you to new heights of success.</p>
+            <a class="button" href="referrallink.html" aria-label="Get paid through referral programs">Get Paid</a>
+          </div>
         </div>
       </div>
     </div>
@@ -109,26 +130,45 @@
 
   <!-- Contact Me Section -->
   <section class="contact-me" id="contact">
-    <p>Deals that pay off</p>
-    <a class="button-two" href="referrallink.html" aria-label="Access paying referral links">Paying Links</a>
+    <div class="container-fluid">
+      <p>Deals that pay off</p>
+      <a class="button-two" href="referrallink.html" aria-label="Access paying referral links">Paying Links</a>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>Teddy Lumidi</p>
-    <p>Follow me on social media for updates and opportunities</p>
-    <div class="social">
-      <a href="https://web.facebook.com/lumidi254/" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-      <a href="https://www.instagram.com/teddylumidi/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-      <a href="https://twitter.com/TeddyLumidi" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-      <a href="https://www.linkedin.com/in/teddylumidi/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Teddy Lumidi on LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-      <a href="https://www.reddit.com/user/shivakala" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Reddit"><i class="fa fa-reddit" aria-hidden="true"></i></a>
-      <a href="https://github.com/teddylumidi" target="_blank" rel="noopener noreferrer" aria-label="View Teddy Lumidi's GitHub profile"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+    <div class="container-fluid">
+      <p>Teddy Lumidi</p>
+      <p>Follow me on social media for updates and opportunities</p>
+      <div class="social">
+        <a href="https://web.facebook.com/lumidi254/" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Facebook">
+          <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/teddylumidi/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Instagram">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://twitter.com/TeddyLumidi" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Twitter">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/teddylumidi/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Teddy Lumidi on LinkedIn">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.reddit.com/user/shivakala" target="_blank" rel="noopener noreferrer" aria-label="Follow Teddy Lumidi on Reddit">
+          <i class="fa fa-reddit" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/teddylumidi" target="_blank" rel="noopener noreferrer" aria-label="View Teddy Lumidi's GitHub profile">
+          <i class="fa fa-github-square" aria-hidden="true"></i>
+        </a>
+      </div>
+      <p class="end">© 2023 Teddy Lumidi. All rights reserved.</p>
     </div>
-    <p class="end">© 2023 Teddy Lumidi. All rights reserved.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <!-- Custom JavaScript -->
   <script>
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -148,10 +188,36 @@
     document.getElementById('submit').addEventListener('click', function(e) {
       e.preventDefault();
       const email = document.getElementById('mail').value;
-      if (email) {
+      if (email && email.includes('@')) {
         alert('Thank you for subscribing! We\'ll be in touch soon.');
         document.getElementById('mail').value = '';
+      } else {
+        alert('Please enter a valid email address.');
       }
+    });
+
+    // Lazy loading for images
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+
+    // Navbar collapse on link click (mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(navbarCollapse).hide();
+        }
+      });
     });
   </script>
 </body>
