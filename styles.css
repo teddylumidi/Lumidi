@@ -47,7 +47,7 @@ body {
 /* Hero Section - Mobile First */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/background.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('img/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
@@ -62,13 +62,24 @@ body {
   }
 }
 
-/* Navigation - Mobile First */
+/* Navigation - Transparent Design */
 .navbar {
-  padding: 1rem 0;
-  background: rgba(16, 16, 16, 0.9);
-  backdrop-filter: blur(10px);
-  position: relative;
+  padding: 1.5rem 0;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Scrolled state for navbar */
+.navbar.scrolled {
+  background: rgba(16, 16, 16, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
@@ -77,6 +88,7 @@ body {
   color: #ffffff !important;
   text-decoration: none;
   transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-brand:hover {
@@ -87,16 +99,17 @@ body {
   color: #f9004d;
 }
 
-/* Custom Toggler */
+/* Custom Toggler with better visibility */
 .custom-toggler {
-  border: 2px solid #f9004d;
-  background: #f9004d;
+  border: 2px solid rgba(249, 0, 77, 0.8);
+  background: rgba(249, 0, 77, 0.9);
   border-radius: 0.375rem;
   padding: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .custom-toggler:focus {
-  box-shadow: 0 0 0 0.25rem rgba(249, 0, 77, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(249, 0, 77, 0.4);
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -105,9 +118,28 @@ body {
   height: 1.5rem;
 }
 
-/* Navigation Links */
+/* Navigation Links with enhanced visibility */
 .navbar-nav {
   gap: 0.5rem;
+}
+
+.navbar-collapse {
+  background: rgba(16, 16, 16, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(249, 0, 77, 0.2);
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse {
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    margin-top: 0;
+    padding: 0;
+  }
 }
 
 .nav-link {
@@ -117,18 +149,37 @@ body {
   border-radius: 0.5rem;
   transition: all 0.3s ease;
   text-transform: capitalize;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(249, 0, 77, 0.1);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::before,
+.nav-link:focus::before {
+  opacity: 1;
 }
 
 .nav-link:hover,
 .nav-link:focus {
   color: #f9004d !important;
-  background: rgba(249, 0, 77, 0.1);
   transform: translateY(-2px);
 }
 
-/* Buttons */
+/* Buttons with enhanced visibility */
 .btn {
-  background: #f9004d;
+  background: rgba(249, 0, 77, 0.9);
   border: 2px solid #f9004d;
   color: #ffffff !important;
   font-weight: 600;
@@ -139,15 +190,17 @@ body {
   display: inline-block;
   text-align: center;
   min-width: 120px;
+  backdrop-filter: blur(10px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover,
 .btn:focus {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   border-color: #f9004d;
   color: #f9004d !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(249, 0, 77, 0.3);
+  box-shadow: 0 4px 15px rgba(249, 0, 77, 0.4);
 }
 
 /* Hero Content */
@@ -158,8 +211,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem 1rem;
-  min-height: calc(100vh - 80px);
+  padding: 6rem 1rem 2rem;
+  min-height: 100vh;
 }
 
 .content h4 {
@@ -168,6 +221,7 @@ body {
   letter-spacing: 2px;
   margin-bottom: 1rem;
   font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .content h1 {
@@ -176,6 +230,7 @@ body {
   color: #ffffff;
   margin: 1rem 0;
   line-height: 1.2;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
 }
 
 .content h1 span {
@@ -187,6 +242,7 @@ body {
   color: #ffffff;
   margin-bottom: 2rem;
   font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .content h3 span {
@@ -211,34 +267,38 @@ body {
 .newsletter input[type="email"] {
   flex: 1;
   padding: 1rem 1.5rem;
-  border: 2px solid #f9004d;
+  border: 2px solid rgba(249, 0, 77, 0.8);
   border-radius: 2rem;
   background: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .newsletter input[type="email"]:focus {
   box-shadow: 0 0 0 0.25rem rgba(249, 0, 77, 0.25);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.98);
+  border-color: #f9004d;
 }
 
 .newsletter input[type="submit"] {
   padding: 1rem 2rem;
-  background: #f9004d;
+  background: rgba(249, 0, 77, 0.9);
   color: #ffffff;
   border: 2px solid #f9004d;
   border-radius: 2rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .newsletter input[type="submit"]:hover {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   color: #f9004d;
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(249, 0, 77, 0.4);
 }
 
 @media (min-width: 768px) {

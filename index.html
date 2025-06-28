@@ -34,7 +34,7 @@
 <body>
   <!-- Hero Section -->
   <header class="hero">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#" aria-label="Teddy Lumidi Home">
           Teddy<span>Lumidi</span>
@@ -170,6 +170,16 @@
   
   <!-- Custom JavaScript -->
   <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('mainNavbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
