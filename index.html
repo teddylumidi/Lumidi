@@ -28,6 +28,24 @@
     body.rtl .skill-row label{flex-direction:row-reverse}
     body.rtl .bar-fill{margin-right:auto;margin-left:0}
 
+    /* ═══ PORTFOLIO CARDS ═══ */
+    .portfolio-item{background:var(--dark2);border:1px solid var(--border);border-radius:1rem;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
+    .portfolio-item:hover{transform:translateY(-6px);box-shadow:0 16px 36px var(--shadow);border-color:rgba(249,0,77,.35)}
+    .portfolio-screenshot{position:relative;overflow:hidden;flex-shrink:0}
+    .portfolio-screenshot .screenshot-img{width:100%;height:200px;object-fit:cover;display:block;background:#1a1a1a;transition:transform .4s ease}
+    .portfolio-item:hover .screenshot-img{transform:scale(1.04)}
+    .screenshot-placeholder{height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:var(--dark3);color:var(--grey)}
+    .screenshot-placeholder i{font-size:2rem;color:var(--red)}
+    .screenshot-placeholder span{font-size:.78rem;letter-spacing:1px}
+    .portfolio-card-body{padding:1.1rem 1.25rem 1.25rem;display:flex;flex-direction:column;flex:1}
+    .portfolio-card-top{margin-bottom:.5rem}
+    .portfolio-card-title{font-size:1rem;font-weight:700;margin-bottom:.4rem;color:var(--white)}
+    .portfolio-card-desc{color:var(--grey);font-size:.83rem;line-height:1.55;margin-bottom:.75rem;flex:1}
+    .tech-stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.85rem}
+    .tech-chip{background:rgba(249,0,77,.1);border:1px solid rgba(249,0,77,.2);color:var(--red);font-size:.68rem;font-weight:700;letter-spacing:.5px;padding:.2rem .55rem;border-radius:2rem;text-transform:uppercase}
+    .portfolio-visit-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:2rem;background:var(--red);color:var(--white);font-size:.78rem;font-weight:700;letter-spacing:.5px;transition:all .3s;align-self:flex-start;border:2px solid var(--red)}
+    .portfolio-visit-btn:hover{background:transparent;color:var(--red)}
+
   </style>
 </head>
 <body> <nav class="navbar" id="navbar"> <a class="brand" onclick="showPage('home')" data-page="home">Teddy <span>Lumidi</span></a> <ul class="nav-links"> <li><a onclick="showPage('home')"        class="active" data-page="home" data-i18n-nav="home">Home</a></li> <li><a onclick="showPage('about')"       data-page="about" data-i18n-nav="about">About Me</a></li> <li><a onclick="showPage('portfolio')"   data-page="portfolio" data-i18n-nav="portfolio">Portfolio</a></li> <li><a onclick="showPage('hobbies')"     data-page="hobbies" data-i18n-nav="hobbies">Hobbies</a></li> <li><a onclick="showPage('vlog')"        data-page="vlog" data-i18n-nav="vlog">Vlog</a></li> <li><a onclick="showPage('blog')"        data-page="blog" data-i18n-nav="blog">Blog</a></li> <li><a onclick="showPage('contact')"     data-page="contact" data-i18n-nav="contact">Contact</a></li> </ul> <button class="hamburger" id="hamburger" aria-label="Menu"> <span></span><span></span><span></span> </button>
@@ -50,9 +68,9 @@
 <script>
 const PROJECTS = [
  { title:"My Portfolio Website", cat:"web", summary:"Personal portfolio and blog built from scratch using HTML, CSS, and JavaScript — showcasing my work, writing, and digital journey.", tech:["HTML","CSS","JavaScript"], url:"https://teddylumidi.com" },
- { title:"Mwalali Homes", cat:"web", summary:"Real estate website for Mwalali Homes, showcasing property listings and housing solutions.", tech:["Web","Design","Real Estate"], url:"https://mwalalihomes.co.ke/" },
- { title:"Shivakalabs", cat:"web", summary:"Technology company website for Shivakalabs, a digital solutions and software development firm.", tech:["Web","Design","Technology"], url:"https://shivakalabs.com/" },
- { title:"The Lonah Maiko Foundation", cat:"web", summary:"Website for The Lonah Maiko Foundation, a non-profit organisation dedicated to community development and social impact.", tech:["Web","Design","Non-Profit"], url:"https://thelonahmaikofoundation.com/" },
+ { title:"Mwalali Homes", cat:"web", summary:"Real estate website for Mwalali Homes, showcasing property listings and housing solutions in Kenya.", tech:["WordPress","Elementor","CSS"], url:"https://mwalalihomes.co.ke/" },
+ { title:"Shivakalabs", cat:"web", summary:"Technology company website for Shivakalabs, a digital solutions and software development firm.", tech:["HTML","CSS","JavaScript"], url:"https://shivakalabs.com/" },
+ { title:"The Lonah Maiko Foundation", cat:"web", summary:"Website for The Lonah Maiko Foundation, a non-profit organisation dedicated to community development and social impact.", tech:["WordPress","Web Design","SEO"], url:"https://thelonahmaikofoundation.com/" },
  { title:"Olulabs Technologies", cat:"web", summary:"Company website for Olulabs Technologies, the digital services firm I co-founded.", tech:["WordPress","Design","SEO"], url:"" },
  { title:"E-Commerce Web Platform", cat:"web", summary:"A full-stack e-commerce solution with product management, cart, checkout, and payment integration.", tech:["React.js","Node.js","MongoDB"], url:"" },
  { title:"Corporate Brand Identity Design", cat:"design", summary:"Complete visual identity package including logo, colour palette, typography system, and brand guidelines.", tech:["Adobe Photoshop","GIMP"], url:"" },
@@ -703,26 +721,26 @@ function renderPortfolio(container, limit) {
   if (!container) return;
   container.className = limit ? 'portfolio-grid home-portfolio-grid' : 'portfolio-grid';
   const items = limit ? PROJECTS.slice(0, limit) : PROJECTS;
+  const visitLabel = t('sections.visitSite');
+  const unavailLabel = t('sections.screenshotUnavail');
   container.innerHTML = items.map(p => {
     const thumbUrl = p.url ? `https://image.thum.io/get/width/600/crop/400/${p.url}` : null;
-    const visitLabel = t('sections.visitSite');
-    const noUrlLabel = t('sections.noUrl');
-    const unavailLabel = t('sections.screenshotUnavail');
     const imgHtml = thumbUrl
       ? `<div class="portfolio-screenshot">
            <img src="${thumbUrl}" alt="${p.title}" loading="lazy" decoding="async" class="screenshot-img"
                 onerror="this.parentElement.innerHTML='<div class=\\"screenshot-placeholder\\"><i class=\\"fa fa-globe\\"></i><span>${unavailLabel}</span></div>'" />
-           <a href="${p.url}" target="_blank" rel="noopener" class="visit-btn"><i class="fa fa-external-link-alt"></i> ${visitLabel}</a>
          </div>`
-      : `<div class="screenshot-placeholder"><i class="fa fa-folder-open"></i><span>${noUrlLabel}</span></div>`;
+      : `<div class="screenshot-placeholder"><i class="fa fa-folder-open"></i></div>`;
     return `<div class="portfolio-item" data-cat="${p.cat}">
       ${imgHtml}
-      <div class="portfolio-overlay">
-        <span class="tag">${catLabel(p.cat)}</span>
-        <h3>${p.title}</h3>
-        <p style="color:var(--grey);font-size:.83rem;margin:.35rem 0;line-height:1.5">${p.summary}</p>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-top">
+          <span class="card-tag">${catLabel(p.cat)}</span>
+        </div>
+        <h3 class="portfolio-card-title">${p.title}</h3>
+        <p class="portfolio-card-desc">${p.summary}</p>
         <div class="tech-stack">${p.tech.map(t2=>`<span class="tech-chip">${t2}</span>`).join('')}</div>
-        ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;color:var(--red);font-size:.8rem;font-weight:700"><i class="fa fa-external-link-alt"></i> ${visitLabel}</a>` : ''}
+        ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="portfolio-visit-btn"><i class="fa fa-external-link-alt"></i> ${visitLabel}</a>` : ''}
       </div>
     </div>`;
   }).join('');

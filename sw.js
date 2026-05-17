@@ -1,8 +1,6 @@
-// Service Worker — Cache-first strategy for Teddy Lumidi site
-const CACHE = 'lumidi-v2';
-const ASSETS = [
-  '/',
-  '/index.html',
+// Service Worker — lumidi-v3
+const CACHE = 'lumidi-v3';
+const STATIC_ASSETS = [
   '/img/background.jpg',
   '/img/avatar.jpg',
   '/img/avatar254.jpg',
@@ -10,7 +8,7 @@ const ASSETS = [
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE).then(c => c.addAll(STATIC_ASSETS)).then(() => self.skipWaiting())
   );
 });
 
@@ -24,23 +22,34 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Cache-first for same-origin assets (images, HTML)
-  if (url.origin === location.origin) {
+
+  // Always fetch HTML fresh from network (never serve stale index.html)
+  if (e.request.destination === 'document' || url.pathname === '/' || url.pathname.endsWith('.html')) {
     e.respondWith(
-      caches.match(e.request).then(cached => {
-        if (cached) return cached;
-        return fetch(e.request).then(res => {
-          if (!res || res.status !== 200 || res.type !== 'basic') return res;
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, clone));
-          return res;
-        }).catch(() => caches.match('/index.html'));
-      })
+      fetch(e.request).then(res => {
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+        return res;
+      }).catch(() => caches.match(e.request))
     );
     return;
   }
-  // Network-first for external resources (fonts, icons, YouTube)
+
+  // External resources — network first, cache fallback
+  if (url.origin !== location.origin) {
+    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+    return;
+  }
+
+  // Same-origin static assets (images, CSS, JS) — cache first
   e.respondWith(
-    fetch(e.request).catch(() => caches.match(e.request))
+    caches.match(e.request).then(cached => {
+      if (cached) return cached;
+      return fetch(e.request).then(res => {
+        if (!res || res.status !== 200 || res.type !== 'basic') return res;
+        caches.open(CACHE).then(c => c.put(e.request, res.clone()));
+        return res;
+      });
+    })
   );
 });
