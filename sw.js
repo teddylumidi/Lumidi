@@ -1,5 +1,5 @@
-// Service Worker — lumidi-v3
-const CACHE = 'lumidi-v3';
+// Service Worker — lumidi-v4
+const CACHE = 'lumidi-v4';
 const STATIC_ASSETS = [
   '/img/background.jpg',
   '/img/avatar.jpg',

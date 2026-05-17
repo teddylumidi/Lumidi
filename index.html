@@ -672,12 +672,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Portfolio URL input enter key
-  const urlIn = document.getElementById('new-project-url');
-  if (urlIn) urlIn.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') addPortfolioUrl();
-  });
-
   // Apply saved language
   setLang(currentLang);
 });
@@ -792,25 +786,6 @@ document.addEventListener('click', function(e) {
   });
 });
 
-/* Add project URL */
-function addPortfolioUrl() {
-  const urlInput = document.getElementById('new-project-url');
-  const titleInput = document.getElementById('new-project-title');
-  if (!urlInput) return;
-  const url = urlInput.value.trim();
-  if (!url) { urlInput.focus(); return; }
-  const fullUrl = url.startsWith('http') ? url : 'https://' + url;
-  let title = titleInput ? titleInput.value.trim() : '';
-  if (!title) { try { title = new URL(fullUrl).hostname; } catch(e) { title = fullUrl; } }
-  PROJECTS.unshift({ title, cat:'web', summary:'Website: ' + fullUrl, tech:['Web'], url: fullUrl });
-  const pg = document.getElementById('portfolio-grid');
-  if (pg) renderPortfolio(pg);
-  const hp = document.getElementById('home-portfolio');
-  if (hp) renderPortfolio(hp, 3);
-  urlInput.value = '';
-  if (titleInput) titleInput.value = '';
-  urlInput.focus();
-}
 
 /* ─── BLOG ─── */
 function renderBlog(container, limit) {
