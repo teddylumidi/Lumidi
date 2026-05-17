@@ -1,5 +1,5 @@
 // Service Worker — Cache-first strategy for Teddy Lumidi site
-const CACHE = 'lumidi-v1';
+const CACHE = 'lumidi-v2';
 const ASSETS = [
   '/',
   '/index.html',

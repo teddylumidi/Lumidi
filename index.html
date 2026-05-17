@@ -842,12 +842,22 @@ async function loadBothChannels(container) {
   if (container) container.innerHTML = html || `<p style="color:var(--grey);text-align:center">${t('sections.unableVideos')} <a href="https://www.youtube.com/@teddylumidi" target="_blank" style="color:var(--red)">${t('sections.watchYoutube')}</a></p>`;
 }
 
+const CHANNEL_IDS = {
+  teddylumidi: 'UCFIUN1hJgmmCK5ytaXuQnxg',
+  teddylumidimusic: 'UCME4llAMpRmY3tiieXOamrg'
+};
+
 async function fetchChannelVideos(handle, count = 4) {
+  const channelId = CHANNEL_IDS[handle];
+  const feedUrl = channelId
+    ? `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+    : `https://www.youtube.com/feeds/videos.xml?user=${handle}`;
   try {
-    const feedUrl = `https://www.youtube.com/feeds/videos.xml?user=${handle}`;
-    const resp = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=${count}`);
-    const data = await resp.json();
-    if (data.items && data.items.length > 0) return parseRssItems(data.items, count);
+    const resp = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data.status === 'ok' && data.items && data.items.length > 0) return parseRssItems(data.items, count);
+    }
   } catch(e) {}
   // Fallback placeholders
   return Array.from({length:4}, (_,i) => ({
