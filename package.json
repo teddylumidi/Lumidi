@@ -1,0 +1,16 @@
+{
+  "name": "teddy-lumidi-referral-site",
+  "version": "1.0.0",
+  "description": "Teddy Lumidi Referral Ambassador Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  },
+  "keywords": ["referral", "ambassador", "website"],
+  "author": "Teddy Lumidi",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
