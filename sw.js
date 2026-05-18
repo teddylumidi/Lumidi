@@ -1,9 +1,12 @@
-// Service Worker — lumidi-v4
-const CACHE = 'lumidi-v4';
+// Service Worker — lumidi-v5
+const CACHE = 'lumidi-v5';
 const STATIC_ASSETS = [
-  '/img/background.jpg',
-  '/img/avatar.jpg',
-  '/img/avatar254.jpg',
+  '/img/background.webp',
+  '/img/background-m.webp',
+  '/img/avatar.webp',
+  '/img/avatar254.webp',
+  '/img/aboutme.webp',
+  '/img/aboutme-m.webp',
 ];
 
 self.addEventListener('install', e => {
