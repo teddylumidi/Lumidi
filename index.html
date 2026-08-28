@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Teddy Lumidi | Web · Design · I.T Support · Analyst</title> <meta name="description" content="Teddy Lumidi — Full Stack Developer, Web Designer, I.T Support Specialist, Business Analyst and digital solutions expert based in Kisumu, Kenya." /> <meta name="theme-color" content="#101010" /> <link rel="dns-prefetch" href="https://image.thum.io" />
+<head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /> <title>Teddy Lumidi | Web · Design · I.T Support · Analyst</title> <meta name="description" content="Teddy Lumidi — Full Stack Developer, Web Designer, I.T Support Specialist, Business Analyst and digital solutions expert based in Kisumu, Kenya." /> <meta name="theme-color" content="#101010" />
   <link rel="dns-prefetch" href="https://img.youtube.com" />
-  <link rel="dns-prefetch" href="https://api.rss2json.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin /> <link rel="preconnect" href="https://image.thum.io" crossorigin /> <link rel="preload" as="image" href="img/background.webp" fetchpriority="high" type="image/webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin /> <link rel="preload" as="image" href="img/background.webp" fetchpriority="high" type="image/webp" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" /> <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" /> <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous" referrerpolicy="no-referrer" /> <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" /></noscript>
@@ -94,6 +93,56 @@
     .yt-mini-play i{font-size:1.5rem;color:#fff;filter:drop-shadow(0 2px 6px rgba(0,0,0,.7))}
     .yt-mini-title{font-size:.7rem;color:var(--grey);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
+    /* Mobile-first reliability and responsive layout */
+    .portfolio-screenshot{aspect-ratio:16/10;background:#111}
+    .portfolio-screenshot .screenshot-img{width:100%;height:100%;object-fit:cover;object-position:top;background:#111}
+    .portfolio-card-body{min-width:0}
+    .portfolio-card-title,.portfolio-card-desc{overflow-wrap:anywhere}
+    .vlog-thumb img,.yt-mini-img-wrap img{background:#161616}
+
+    @media(max-width:639px){
+      .navbar{padding:.85rem 1rem;gap:.65rem;background:linear-gradient(to bottom,rgba(16,16,16,.86),transparent)}
+      .navbar.scrolled{padding:.7rem 1rem}
+      .brand{font-size:1.3rem}
+      .lang-current{padding:.3rem .55rem}
+      .hero{min-height:100dvh;padding:5.75rem 1rem 3rem;background-position:center top}
+      .hero-badge{font-size:.66rem;letter-spacing:1.4px;text-align:center}
+      .hero h1{font-size:clamp(2.65rem,15vw,4.2rem)}
+      .hero .tagline{font-size:.8rem;letter-spacing:2px}
+      .hero .intro{font-size:.92rem;line-height:1.7}
+      .cta-group{width:100%;max-width:340px}
+      .cta-group .btn{width:100%;justify-content:center}
+      section{padding:3.25rem 1rem}
+      .section-title{margin-bottom:2rem}
+      .section-title h2{font-size:clamp(1.75rem,9vw,2.4rem)}
+      .portfolio-grid,.home-portfolio-grid,.vlog-grid,.blog-grid,.yt-channels{grid-template-columns:1fr}
+      .portfolio-item,.vlog-card,.card{border-radius:.85rem}
+      .portfolio-card-body{padding:1rem}
+      .portfolio-visit-btn{width:100%;min-height:44px;justify-content:center}
+      .vlog-info{padding:1rem}
+      .vlog-info h4{font-size:1rem}
+      .yt-card{padding:1rem}
+      .yt-card-header{align-items:center}
+      .yt-card-info{flex-basis:calc(100% - 4.5rem)}
+      .yt-sub-btn{width:100%;justify-content:center;min-height:44px}
+      .yt-thumbs-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+      .page-hero{padding:6.5rem 1rem 3rem;background-position:center top}
+      .page-hero h1{font-size:clamp(2rem,12vw,3rem)}
+      .filter-bar{justify-content:flex-start}
+      .contact-grid,.two-col,.about-layout{grid-template-columns:1fr}
+      .contact-form,.contact-info-card{padding:1.15rem}
+      .footer-grid{grid-template-columns:1fr}
+    }
+
+    @media(min-width:640px) and (max-width:959px){
+      .portfolio-grid,.home-portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .vlog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
+    @media(min-width:960px){
+      .portfolio-grid,.home-portfolio-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+
   </style>
 </head>
 <body> <nav class="navbar" id="navbar"> <a class="brand" onclick="showPage('home')" data-page="home">Teddy <span>Lumidi</span></a> <ul class="nav-links"> <li><a onclick="showPage('home')"        class="active" data-page="home" data-i18n-nav="home">Home</a></li> <li><a onclick="showPage('about')"       data-page="about" data-i18n-nav="about">About Me</a></li> <li><a onclick="showPage('portfolio')"   data-page="portfolio" data-i18n-nav="portfolio">Portfolio</a></li> <li><a onclick="showPage('hobbies')"     data-page="hobbies" data-i18n-nav="hobbies">Hobbies</a></li> <li><a onclick="showPage('vlog')"        data-page="vlog" data-i18n-nav="vlog">Vlog</a></li> <li><a onclick="showPage('blog')"        data-page="blog" data-i18n-nav="blog">Blog</a></li> <li><a onclick="showPage('contact')"     data-page="contact" data-i18n-nav="contact">Contact</a></li> </ul> <button class="hamburger" id="hamburger" aria-label="Menu"> <span></span><span></span><span></span> </button>
@@ -112,11 +161,11 @@
 </div> <div id="toast">Opening your email client... 📧</div>
 <script>
 const PROJECTS = [
- { id:"kenya-interior", title:"Kanya Interior", cat:"web", summary:"Interior design and furnishing website with a visual landing page for spaces, services, and interior solutions.", tech:["Web Design","Responsive UI","Branding"], url:"https://kanyainterior.co.ke/" },
- { id:"remax-safaris", title:"Remax Safaris", cat:"web", summary:"Safari travel website presenting memorable Kenyan experiences, destinations, and booking-focused content.", tech:["Web Design","UX","SEO"], url:"https://remaxsafaris.com/" },
- { id:"lonah-maiko-foundation", title:"The Lonah Maiko Foundation", cat:"web", summary:"Non-profit organisation website supporting community development, impact storytelling, and outreach.", tech:["WordPress","Web Design","SEO"], url:"https://thelonahmaikofoundation.com/" },
- { id:"mwalali-homes", title:"Mwalali Homes", cat:"web", summary:"Real estate website showcasing property listings and housing solutions for buyers and homeowners in Kenya.", tech:["WordPress","Elementor","CSS"], url:"https://mwalalihomes.co.ke/" },
- { id:"donovans-heavy-metal-recycling", title:"Donovan's Heavy Metal Recycling", cat:"web", summary:"Industrial recycling website for a Canadian metal recovery and responsible material processing business.", tech:["Web Design","Responsive UI","Content"], url:"https://donovansheavymetalrecycling.ca/" }
+ { id:"kenya-interior", title:"Kanya Interior", cat:"web", summary:"Interior design and furnishing website with a visual landing page for spaces, services, and interior solutions.", tech:["Web Design","Responsive UI","Branding"], preview:"img/projects/kanya-interior.webp", url:"https://kanyainterior.co.ke/" },
+ { id:"remax-safaris", title:"Remax Safaris", cat:"web", summary:"Safari travel website presenting memorable Kenyan experiences, destinations, and booking-focused content.", tech:["Web Design","UX","SEO"], preview:"img/projects/remax-safaris.webp", url:"https://remaxsafaris.com/" },
+ { id:"lonah-maiko-foundation", title:"The Lonah Maiko Foundation", cat:"web", summary:"Non-profit organisation website supporting community development, impact storytelling, and outreach.", tech:["WordPress","Web Design","SEO"], preview:"img/projects/lonah-maiko-foundation.webp", url:"https://thelonahmaikofoundation.com/" },
+ { id:"mwalali-homes", title:"Mwalali Homes", cat:"web", summary:"Real estate website showcasing property listings and housing solutions for buyers and homeowners in Kenya.", tech:["WordPress","Elementor","CSS"], preview:"img/projects/mwalali-homes.webp", url:"https://mwalalihomes.co.ke/" },
+ { id:"donovans-heavy-metal-recycling", title:"Donovan's Heavy Metal Recycling", cat:"web", summary:"Industrial recycling website for a Canadian metal recovery and responsible material processing business.", tech:["Web Design","Responsive UI","Content"], preview:"img/projects/donovans-heavy-metal-recycling.webp", url:"https://donovansheavymetalrecycling.ca/" }
 ];
 
 const BLOG_POSTS = [
@@ -763,8 +812,8 @@ function escapeHtml(value = '') {
   }[char]));
 }
 
-function getPortfolioPreviewUrl(projectId) {
-  return projectId ? `/api/project-preview/${encodeURIComponent(projectId)}` : null;
+function getPortfolioPreviewUrl(value) {
+  return typeof value === 'string' && /^img\/projects\/[a-z0-9-]+\.webp$/.test(value) ? value : null;
 }
 
 function onPortfolioImgErr(img) {
@@ -790,7 +839,7 @@ function renderPortfolio(container, limit) {
   const visitLabel = t('sections.visitSite');
   container.innerHTML = items.map(p => {
     const projectUrl = getSafeHttpUrl(p.url);
-    const previewUrl = getPortfolioPreviewUrl(p.id);
+    const previewUrl = getPortfolioPreviewUrl(p.preview);
     const imgHtml = previewUrl
       ? `<div class="portfolio-screenshot">
            <img src="${previewUrl}" alt="${escapeHtml(p.title)} landing page preview" loading="eager" decoding="async" class="screenshot-img"
@@ -870,18 +919,24 @@ function renderVideoFallback(handle) {
 
 function renderVlogCards(videos, handle) {
   if (!Array.isArray(videos) || videos.length === 0) return renderVideoFallback(handle);
-  return videos.map(v => `
-    <div class="vlog-card" onclick="openVideoUrl('${v.url}')">
+  return videos.map(v => {
+    const safeUrl = escapeHtml(v.url);
+    const safeTitle = escapeHtml(v.title);
+    const safeCaption = escapeHtml(v.caption || '');
+    const safeThumb = escapeHtml(v.thumb || 'img/background.webp');
+    return `
+    <div class="vlog-card" data-video-url="${safeUrl}" onclick="openVideoUrl(this.dataset.videoUrl)">
       <div class="vlog-thumb">
-        <img src="${v.thumb}" alt="${v.title}" loading="lazy" decoding="async"
-             onerror="this.src='img/background.jpg'" />
+        <img src="${safeThumb}" alt="${safeTitle}" loading="lazy" decoding="async"
+             onerror="this.onerror=null;this.src='img/background.webp'" />
         <div class="play-btn"><i class="fa fa-play-circle"></i></div>
       </div>
       <div class="vlog-info">
-        <h4>${v.title}</h4>
-        <p>${v.caption ? v.caption.substring(0,80)+'...' : ''}</p>
+        <h4>${safeTitle}</h4>
+        <p>${safeCaption ? safeCaption.substring(0, 80) + '...' : ''}</p>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function renderVlog(container) {
@@ -925,17 +980,17 @@ async function fetchChannelVideos(handle, count = 4) {
   const requestedCount = Number.isInteger(count) ? Math.min(Math.max(count, 1), 12) : 4;
   if (!channelId || !/^[A-Za-z0-9_-]+$/.test(handle) || !/^[A-Za-z0-9_-]+$/.test(channelId)) return [];
 
-  const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-  const apiUrl = new URL('https://api.rss2json.com/v1/api.json');
-  apiUrl.searchParams.set('rss_url', feedUrl);
+  const apiUrl = new URL('/api/youtube', window.location.origin);
+  apiUrl.searchParams.set('channel', handle);
+  apiUrl.searchParams.set('limit', requestedCount);
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 8000);
+  const timeoutId = setTimeout(() => controller.abort(), 12000);
   try {
     const resp = await fetch(apiUrl.href, { signal: controller.signal });
     if (!resp.ok) return [];
     const data = await resp.json();
-    if (data?.status !== 'ok' || !Array.isArray(data.items) || data.items.length === 0) return [];
-    return parseRssItems(data.items, requestedCount, handle);
+    if (!Array.isArray(data?.videos) || data.videos.length === 0) return [];
+    return parseYoutubeItems(data.videos, requestedCount, handle);
   } catch(e) {
     return [];
   } finally {
@@ -947,20 +1002,16 @@ function getYoutubeChannelUrl(handle) {
   return CHANNEL_IDS[handle] ? `https://www.youtube.com/@${handle}/videos` : null;
 }
 
-function parseRssItems(items, count, handle) {
+function parseYoutubeItems(items, count, handle) {
   return items.slice(0, count).map(item => {
-    let videoId = '';
-    const src = getSafeHttpUrl(item?.link) || getSafeHttpUrl(item?.guid) || '';
-    try {
-      const parsedUrl = new URL(src);
-      videoId = parsedUrl.searchParams.get('v') || parsedUrl.pathname.match(/(?:\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/)?.[1] || '';
-      if (!videoId && parsedUrl.hostname === 'youtu.be') videoId = parsedUrl.pathname.slice(1).match(/^[A-Za-z0-9_-]{11}$/)?.[0] || '';
-    } catch (e) {}
+    const videoId = /^[A-Za-z0-9_-]{11}$/.test(item?.videoId || '') ? item.videoId : '';
+    const src = getSafeHttpUrl(item?.url) || getYoutubeChannelUrl(handle);
+    const remoteThumb = getSafeHttpUrl(item?.thumb);
     return {
       title: item?.title || 'Video',
-      caption: (item?.description||'').replace(/<[^>]+>/g,'').substring(0,100),
-      url: src || getYoutubeChannelUrl(handle),
-      thumb: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 'img/background.jpg',
+      caption: (item?.caption || '').replace(/<[^>]+>/g, '').substring(0, 140),
+      url: src,
+      thumb: remoteThumb || (videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : 'img/background.webp'),
       videoId
     };
   });
@@ -986,14 +1037,14 @@ async function loadChannelThumbsSection() {
       continue;
     }
     el.innerHTML = videos.map(v => {
-      const safeTitle = v.title.replace(/'/g, "\\'");
+      const safeTitle = escapeHtml(v.title);
       const displayTitle = v.title.length > 52 ? v.title.substring(0, 49) + '…' : v.title;
-      return `<div class="yt-mini-thumb" onclick="openVideoUrl('${v.url}')" title="${v.title}">
+      return `<div class="yt-mini-thumb" data-video-url="${escapeHtml(v.url)}" onclick="openVideoUrl(this.dataset.videoUrl)" title="${safeTitle}">
         <div class="yt-mini-img-wrap">
-          <img src="${v.thumb}" alt="${safeTitle}" loading="lazy" decoding="async" onerror="this.src='img/background.jpg'" />
+          <img src="${escapeHtml(v.thumb)}" alt="${safeTitle}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='img/background.webp'" />
           <div class="yt-mini-play"><i class="fa fa-play"></i></div>
         </div>
-        <p class="yt-mini-title">${displayTitle}</p>
+        <p class="yt-mini-title">${escapeHtml(displayTitle)}</p>
       </div>`;
     }).join('');
   }
@@ -1097,6 +1148,10 @@ document.addEventListener('click', function(e) {
 (function init() {
   // Build language switcher in navbar
   buildLangSwitcher();
+  const portfolioFilters = document.querySelector('#page-portfolio .filter-bar');
+  if (portfolioFilters) {
+    portfolioFilters.innerHTML = '<button class="filter-btn active" data-filter="all">Featured Websites</button>';
+  }
 
   // Inject footers
   ['home','about','portfolio','hobbies','vlog','blog','contact'].forEach(p => injectFooter('footer-'+p));
@@ -1104,7 +1159,7 @@ document.addEventListener('click', function(e) {
   // Render home page sections after DOM settles
   setTimeout(() => {
     const homePortfolio = document.getElementById('home-portfolio');
-    if (homePortfolio) renderPortfolio(homePortfolio, 3);
+    if (homePortfolio) renderPortfolio(homePortfolio, PROJECTS.length);
 
     const homeBlog = document.getElementById('home-blog');
     if (homeBlog) renderBlog(homeBlog, 3);

@@ -6,6 +6,11 @@ const STATIC_ASSETS = [
   '/img/avatar.webp',
   '/img/aboutme-card.webp',
   '/img/aboutme-m.webp',
+  '/img/projects/kanya-interior.webp',
+  '/img/projects/remax-safaris.webp',
+  '/img/projects/lonah-maiko-foundation.webp',
+  '/img/projects/mwalali-homes.webp',
+  '/img/projects/donovans-heavy-metal-recycling.webp',
 ];
 
 self.addEventListener('install', e => {
