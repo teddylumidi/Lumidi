@@ -1,5 +1,5 @@
-// Service Worker — lumidi-v6
-const CACHE = 'lumidi-v6';
+// Service Worker — lumidi-v7
+const CACHE = 'lumidi-v7';
 const STATIC_ASSETS = [
   '/img/background.webp',
   '/img/background-m.webp',

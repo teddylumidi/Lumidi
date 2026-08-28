@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
@@ -92,6 +93,15 @@ app.get('/api/youtube', async (req, res) => {
 // that is present in the imported project.
 app.get('/img/aboutme.webp', (req, res) => {
   res.sendFile(path.join(__dirname, 'img', 'aboutme-card.webp'));
+});
+
+// Keep private contact addresses out of both the rendered page and its
+// downloadable HTML source.
+app.get(['/', '/index.html'], (req, res) => {
+  const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8')
+    .replaceAll('lumiditeddy@gmail.com', '')
+    .replaceAll('lumiditeddy@yahoo.com', '');
+  res.type('html').send(html);
 });
 
 // Serve static files from root directory with HTML extensions support
