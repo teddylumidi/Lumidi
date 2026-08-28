@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 5000;
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

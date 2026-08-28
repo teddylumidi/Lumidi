@@ -8,7 +8,11 @@
     "build": "echo 'Static assets ready'",
     "start": "node server.js"
   },
-  "keywords": ["referral", "ambassador", "website"],
+  "keywords": [
+    "referral",
+    "ambassador",
+    "website"
+  ],
   "author": "Teddy Lumidi",
   "license": "MIT",
   "devDependencies": {
