@@ -112,17 +112,11 @@
 </div> <div id="toast">Opening your email client... 📧</div>
 <script>
 const PROJECTS = [
- { title:"My Portfolio Website", cat:"web", summary:"Personal portfolio and blog built from scratch using HTML, CSS, and JavaScript — showcasing my work, writing, and digital journey.", tech:["HTML","CSS","JavaScript"], url:"https://teddylumidi.com" },
- { title:"Mwalali Homes", cat:"web", summary:"Real estate website for Mwalali Homes, showcasing property listings and housing solutions in Kenya.", tech:["WordPress","Elementor","CSS"], url:"https://mwalalihomes.co.ke/" },
- { title:"Shivakalabs", cat:"web", summary:"Technology company website for Shivakalabs, a digital solutions and software development firm.", tech:["HTML","CSS","JavaScript"], url:"https://shivakalabs.com/" },
- { title:"The Lonah Maiko Foundation", cat:"web", summary:"Website for The Lonah Maiko Foundation, a non-profit organisation dedicated to community development and social impact.", tech:["WordPress","Web Design","SEO"], url:"https://thelonahmaikofoundation.com/" },
- { title:"Olulabs Technologies", cat:"web", summary:"Company website for Olulabs Technologies, the digital services firm I co-founded.", tech:["WordPress","Design","SEO"], url:"" },
- { title:"E-Commerce Web Platform", cat:"web", summary:"A full-stack e-commerce solution with product management, cart, checkout, and payment integration.", tech:["React.js","Node.js","MongoDB"], url:"" },
- { title:"Corporate Brand Identity Design", cat:"design", summary:"Complete visual identity package including logo, colour palette, typography system, and brand guidelines.", tech:["Adobe Photoshop","GIMP"], url:"" },
- { title:"Digital Marketing Campaign", cat:"marketing", summary:"End-to-end digital marketing campaign encompassing SEO, social media, and Google Ads strategy.", tech:["Google Analytics","SEO","SEM"], url:"" },
- { title:"Business Intelligence Dashboard", cat:"analytics", summary:"Interactive data dashboard built to visualise KPIs, sales trends, and operational metrics for decision-makers.", tech:["Python","Data Viz","Excel"], url:"" },
- { title:"WordPress CMS Website", cat:"web", summary:"Fully customised WordPress website with plugins, SEO optimisation, and responsive design for a local business.", tech:["WordPress","PHP","CSS"], url:"" },
- { title:"Python Automation Tool", cat:"web", summary:"A Python script automating repetitive data processing tasks, reducing manual effort by over 60%.", tech:["Python","Scripting","Automation"], url:"" }
+ { id:"kenya-interior", title:"Kanya Interior", cat:"web", summary:"Interior design and furnishing website with a visual landing page for spaces, services, and interior solutions.", tech:["Web Design","Responsive UI","Branding"], url:"https://kanyainterior.co.ke/" },
+ { id:"remax-safaris", title:"Remax Safaris", cat:"web", summary:"Safari travel website presenting memorable Kenyan experiences, destinations, and booking-focused content.", tech:["Web Design","UX","SEO"], url:"https://remaxsafaris.com/" },
+ { id:"lonah-maiko-foundation", title:"The Lonah Maiko Foundation", cat:"web", summary:"Non-profit organisation website supporting community development, impact storytelling, and outreach.", tech:["WordPress","Web Design","SEO"], url:"https://thelonahmaikofoundation.com/" },
+ { id:"mwalali-homes", title:"Mwalali Homes", cat:"web", summary:"Real estate website showcasing property listings and housing solutions for buyers and homeowners in Kenya.", tech:["WordPress","Elementor","CSS"], url:"https://mwalalihomes.co.ke/" },
+ { id:"donovans-heavy-metal-recycling", title:"Donovan's Heavy Metal Recycling", cat:"web", summary:"Industrial recycling website for a Canadian metal recovery and responsible material processing business.", tech:["Web Design","Responsive UI","Content"], url:"https://donovansheavymetalrecycling.ca/" }
 ];
 
 const BLOG_POSTS = [
@@ -561,7 +555,7 @@ function setLang(lang) {
   updateAllText();
   // Re-render dynamic sections with new language
   const hp = document.getElementById('home-portfolio');
-  if (hp) renderPortfolio(hp, 3);
+  if (hp) renderPortfolio(hp, PROJECTS.length);
   const hb = document.getElementById('home-blog');
   if (hb) renderBlog(hb, 3);
   if (_rendered.portfolio) renderPortfolio(document.getElementById('portfolio-grid'));
@@ -747,7 +741,7 @@ function toggleAccordion(btn) {
   }
 }
 
-/* ─── PORTFOLIO IMAGE ERROR HANDLER ─── */
+/* ─── PORTFOLIO PREVIEWS ─── */
 function getSafeHttpUrl(value) {
   if (typeof value !== 'string' || !value.trim()) return null;
   try {
@@ -759,68 +753,27 @@ function getSafeHttpUrl(value) {
   }
 }
 
-function getPortfolioPreviewUrl(value) {
-  const projectUrl = getSafeHttpUrl(value);
-  return projectUrl ? `https://image.thum.io/get/width/600/crop/400/${projectUrl}` : null;
+function escapeHtml(value = '') {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[char]));
 }
 
-function clearPortfolioImgTimer(img) {
-  if (img?._fallbackTimer) {
-    clearTimeout(img._fallbackTimer);
-    delete img._fallbackTimer;
-  }
-}
-
-function onPortfolioImgLoad(img) {
-  if (img?._previewObjectUrl) {
-    URL.revokeObjectURL(img._previewObjectUrl);
-    delete img._previewObjectUrl;
-  }
+function getPortfolioPreviewUrl(projectId) {
+  return projectId ? `/api/project-preview/${encodeURIComponent(projectId)}` : null;
 }
 
 function onPortfolioImgErr(img) {
-  clearPortfolioImgTimer(img);
-  img?._previewController?.abort();
-  if (img?._previewObjectUrl) {
-    URL.revokeObjectURL(img._previewObjectUrl);
-    delete img._previewObjectUrl;
-  }
+  if (!img || img.dataset.failed === 'true') return;
+  img.dataset.failed = 'true';
   const wrap = img.parentElement;
-  if (wrap) wrap.innerHTML = `<div class="screenshot-placeholder"><i class="fa fa-globe"></i><span>${t('sections.screenshotUnavail')}</span></div>`;
-}
-
-function watchPortfolioPreviews(container) {
-  container.querySelectorAll('.screenshot-img').forEach(img => {
-    const previewUrl = getSafeHttpUrl(img.dataset.previewUrl);
-    if (!previewUrl) {
-      onPortfolioImgErr(img);
-      return;
-    }
-
-    const controller = new AbortController();
-    img._previewController = controller;
-    img._fallbackTimer = setTimeout(() => controller.abort(), 6000);
-    fetch(previewUrl, { signal: controller.signal, referrerPolicy: 'no-referrer' })
-      .then(response => {
-        if (!response.ok || !response.headers.get('content-type')?.startsWith('image/')) {
-          throw new Error('Preview provider unavailable');
-        }
-        return response.blob();
-      })
-      .then(blob => {
-        if (!img.isConnected) return;
-        const objectUrl = URL.createObjectURL(blob);
-        img._previewObjectUrl = objectUrl;
-        img.src = objectUrl;
-      })
-      .catch(() => {
-        if (img.isConnected) onPortfolioImgErr(img);
-      })
-      .finally(() => {
-        clearPortfolioImgTimer(img);
-        delete img._previewController;
-      });
-  });
+  if (wrap) {
+    wrap.innerHTML = `<div class="screenshot-placeholder"><i class="fa fa-globe"></i><span>${t('sections.screenshotUnavail')}</span></div>`;
+  }
 }
 
 /* ─── CATEGORY LABELS ─── */
@@ -831,16 +784,17 @@ function catLabel(c) {
 /* ─── PORTFOLIO ─── */
 function renderPortfolio(container, limit) {
   if (!container) return;
-  container.className = limit ? 'portfolio-grid home-portfolio-grid' : 'portfolio-grid';
-  const items = limit ? PROJECTS.slice(0, limit) : PROJECTS;
+  const isHome = container.id === 'home-portfolio';
+  container.className = isHome ? 'portfolio-grid home-portfolio-grid' : 'portfolio-grid';
+  const items = Number.isInteger(limit) ? PROJECTS.slice(0, limit) : PROJECTS;
   const visitLabel = t('sections.visitSite');
   container.innerHTML = items.map(p => {
     const projectUrl = getSafeHttpUrl(p.url);
-    const thumbUrl = getPortfolioPreviewUrl(projectUrl);
-    const imgHtml = thumbUrl
+    const previewUrl = getPortfolioPreviewUrl(p.id);
+    const imgHtml = previewUrl
       ? `<div class="portfolio-screenshot">
-           <img src="img/background.jpg" data-preview-url="${thumbUrl}" alt="${p.title}" loading="lazy" decoding="async" class="screenshot-img"
-                 onload="onPortfolioImgLoad(this)" onerror="onPortfolioImgErr(this)" referrerpolicy="no-referrer" />
+           <img src="${previewUrl}" alt="${escapeHtml(p.title)} landing page preview" loading="eager" decoding="async" class="screenshot-img"
+                 onerror="onPortfolioImgErr(this)" />
          </div>`
       : `<div class="screenshot-placeholder"><i class="fa fa-folder-open"></i></div>`;
     return `<div class="portfolio-item" data-cat="${p.cat}">
@@ -856,7 +810,6 @@ function renderPortfolio(container, limit) {
       </div>
     </div>`;
   }).join('');
-  watchPortfolioPreviews(container);
 }
 
 /* Portfolio filter — event delegation */

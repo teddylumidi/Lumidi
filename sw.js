@@ -1,11 +1,10 @@
-// Service Worker — lumidi-v5
-const CACHE = 'lumidi-v5';
+// Service Worker — lumidi-v6
+const CACHE = 'lumidi-v6';
 const STATIC_ASSETS = [
   '/img/background.webp',
   '/img/background-m.webp',
   '/img/avatar.webp',
-  '/img/avatar254.webp',
-  '/img/aboutme.webp',
+  '/img/aboutme-card.webp',
   '/img/aboutme-m.webp',
 ];
 
@@ -41,6 +40,12 @@ self.addEventListener('fetch', e => {
   // External resources — network first, cache fallback
   if (url.origin !== location.origin) {
     e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+    return;
+  }
+
+  // Dynamic feeds and generated project previews must stay fresh.
+  if (url.pathname.startsWith('/api/')) {
+    e.respondWith(fetch(e.request));
     return;
   }
 
