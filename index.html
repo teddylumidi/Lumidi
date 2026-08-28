@@ -1120,6 +1120,25 @@ function openVideoUrl(url) {
    if (who) who.innerHTML = WHO_I_AM_HTML;
  }
 
+ function moveCvToWhoIAm() {
+   const profileLabel = [...document.querySelectorAll('#page-about .section-title .label')]
+     .find(el => el.textContent.trim() === 'Wikipedia-Style Profile');
+   if (profileLabel) profileLabel.remove();
+
+   const cvButton = document.querySelector('#page-about a[download]');
+   const who = document.querySelector('#page-home .wiki-bio');
+   if (!cvButton || !who || document.querySelector('#page-home .who-cv-btn')) return;
+
+   const holder = document.createElement('div');
+   holder.className = 'text-center';
+   holder.style.marginTop = '1.25rem';
+   const movedButton = cvButton.cloneNode(true);
+   movedButton.classList.add('who-cv-btn');
+   holder.appendChild(movedButton);
+   who.after(holder);
+   cvButton.closest('.text-center')?.remove();
+ }
+
  function renderGallery() {
    const gallery = document.querySelector('#page-hobbies .section-title + div');
    if (!gallery) return;
@@ -1217,6 +1236,7 @@ document.addEventListener('click', function(e) {
   ['home','about','portfolio','hobbies','vlog','blog','contact'].forEach(p => injectFooter('footer-'+p));
   removePublicEmailAddresses();
   renderWhoIAm();
+  moveCvToWhoIAm();
   renderGallery();
 
   // Render home page sections after DOM settles
