@@ -174,7 +174,7 @@ const BLOG_POSTS = [
  cat: "personal",
  date: "2022",
  excerpt: "Hello world! It took me a long time to start this journey — a journey full of thorns and procrastination. But it starts now.",
- img: "img/background.jpg",
+  img: "img/aboutme-card.webp",
  body: `<p>Hello world! It took me a long time to start this journey. The journey has been full of thorns and procrastination — but it starts now.</p>
 <p>All my life I have dreamed of putting my name on the internet, but I just didn't know where to start. No matter how much I tried, it just didn't work out. It was a painful experience knowing that I had unfinished tasks that I simply had to work through.</p>
 <p>I was so caught up in the hustle and bustle of life that most of my childhood dreams turned into nightmares — but I never gave up. I wanted to show the world my story. The internet was my playground. Having grown up moving from neighbourhood to neighbourhood, it really disrupted my childhood. I wanted the poems, the books, the stories, and the drawings I worked on in my room to be read globally.</p>
@@ -199,7 +199,7 @@ const BLOG_POSTS = [
  cat: "personal",
  date: "2022",
  excerpt: "High school was the most stressful chapter of my learning journey — but it also shaped me into who I am today.",
- img: "img/2.jpg",
+  img: "img/2.webp",
  body: `<p>In 2004 we moved to a new neighbourhood called Okore. This was just before I finished primary school — I was in Class 8, my final year. Okore Estate was quiet. Unlike Gudka Estate, where houses were clustered together, here every home was separately fenced and getting to know your neighbours required real effort. Everyone minded their own business. I had a hard time maintaining my nerd lifestyle in that environment.</p>
 <p>Fortunately, I had a friend — Shallum Gacheha, my classmate and best friend at the time. Shallum was the person to call if you needed to watch the latest movies. He would take me to movie screenings in his neighbourhood to catch the latest action films, or bring CDs, DVDs, and VHS tapes to watch at my parents' house. He even introduced me to And1 Mixtapes and the basketball lifestyle. We talked extensively about everything happening in the media.</p>
 <p>After finishing primary school in late 2004, I spent about two months savouring my nerdy life before joining high school in February 2005.</p>
@@ -215,7 +215,7 @@ const BLOG_POSTS = [
  cat: "personal",
  date: "2022",
  excerpt: "College brought some freedom — but also the harsh reality of being broke and still chasing a dream of becoming a tech genius.",
- img: "img/3.jpg",
+  img: "img/3.webp",
  body: `<p>The only thing that kept my nerdy life going during college was the promise of freedom afterward — otherwise, I was broke. Nerdiness and brokenness hardly go together.</p>
 <p>In college, I chose an ICT Diploma course to pursue my career path, since I had always been an IT enthusiast. I also started practising computer programming — beginning with the C language. I had very little clue about what I was actually doing, but I was intensely interested in becoming a computer genius and, at one point, a hacker. I began leaning toward a career specialisation.</p>
 <p>I did not do a great deal of academically productive things in college. I watched many movies, walked around classes, and spent time playing GTA: Vice City, Desert Storm, Project IGI, Need for Speed Most Wanted, NFS Porsche, and NFS Underground 2. We were also consumed by the social media explosion of that era, and I found myself signing up for almost every new platform. I even had a MySpace account — though MySpace was already dying by then.</p>
@@ -253,7 +253,7 @@ const BLOG_POSTS = [
  cat: "career",
  date: "2022",
  excerpt: "I vowed to build a lifestyle that feels like work and vacation at the same time — the digital nomad dream, and how I am chasing it.",
- img: "img/ddf.jpg",
+  img: "img/ddf.webp",
  body: `<p>I am honest with myself about this: I dislike physical work intensely. Every time I think about what to do with my life, my mind gravitates toward automation. Nothing satisfies me quite like the feeling of automating my existence. I vowed to live a lifestyle that serves simultaneously as work and as a vacation — and the digital nomad life is exactly that vision.</p>
 <p>I have fantasised about this lifestyle for most of my adult career. The two resources that can make it a reality are a laptop and a smartphone. I have long dreamed of combining them with passive income streams to build a life of genuine freedom.</p>
 <p>I started preparing for this lifestyle as far back as 2015. The challenges were clear: I could not afford the right gadgets, and I lacked the specific skills needed to execute the mission. For years, preparation remained trapped in procrastination — until I finally decided to quit my job and begin planning in earnest.</p>
@@ -389,8 +389,6 @@ function injectFooter(id) {
  <div class="footer-col">
  <h4>Contact</h4>
  <ul>
- <li><a href="mailto:lumiditeddy@gmail.com">lumiditeddy@gmail.com</a></li>
- <li><a href="mailto:lumiditeddy@yahoo.com">lumiditeddy@yahoo.com</a></li>
  <li><a href="tel:+254716358703">+254 716 358 703</a></li>
  <li><a>teddylumidi.com</a></li>
  <li><a>Kisumu, Kenya</a></li>
@@ -1080,7 +1078,67 @@ function openVideoUrl(url) {
 }
 
 /* ─── CONTACT ─── */
-function sendMessage() {
+ const WHO_I_AM_HTML = `
+   <p><strong>Teddy Lumidi</strong> is a Kenyan full-stack developer and digital solutions specialist focused on building modern web applications, digital platforms, and technology-driven solutions.</p>
+   <p>His work combines full-stack web development, UI/UX design, IT solutions, digital marketing, automation, and business-focused technology. He specializes in turning ideas and business requirements into practical, scalable, and user-friendly digital products.</p>
+   <p>Through Shivakalabs, he develops websites, software solutions, digital platforms, and technology services designed to solve real-world problems and help businesses operate and grow more effectively.</p>`;
+
+ // This is intentionally an explicit list. New files should not be added
+ // to the public gallery automatically.
+ const GALLERY_IMAGES = [
+   ['img/aboutme-card.webp', 'Teddy Lumidi'],
+   ['img/aboutme.jpeg', 'Teddy Lumidi'],
+   ['img/avatar@2x.jpg', 'Teddy Lumidi'],
+   ['img/background.webp', 'Creative portrait'],
+   ['img/hobbies-hero.webp', 'Hobbies and creativity'],
+   ['img/contact-hero.webp', 'Teddy Lumidi'],
+   ['img/110233210_147145637002858_5351350956077992794_o.jpg', 'Personal memory'],
+   ['img/1.jpg', 'Childhood memory'],
+   ['img/2.webp', 'High school memory'],
+   ['img/3.webp', 'College memory'],
+   ['img/4.jpg', 'Personal memory'],
+   ['img/5.png', 'Personal memory'],
+   ['img/ddf.webp', 'Laptop and smartphone'],
+   ['img/figure@2x.jpg', 'Personal reflection'],
+   ['img/offer-1@2x.jpg', 'Creative memory'],
+   ['img/offer-2@2x.jpg', 'Creative memory'],
+   ['img/offer-4@2x.jpg', 'Creative memory'],
+   ['img/IMG_20211226_160723_721.jpg', 'Personal memory'],
+   ['img/IMG_20211226_160810_191.jpg', 'Personal memory'],
+   ['img/IMG_20211226_160817_280 - Copy.jpg', 'Personal memory'],
+   ['img/IMG_20211226_160824_614.jpg', 'Personal memory'],
+   ['img/IMG_20211226_160817_280 - Copy (2) - Copy.jpg', 'Personal memory'],
+   ['img/gallery-191.webp', 'Gallery memory'],
+   ['img/gallery-280.webp', 'Gallery memory'],
+   ['img/gallery-614.webp', 'Gallery memory'],
+   ['img/gallery-721.webp', 'Gallery memory']
+ ];
+
+ function renderWhoIAm() {
+   const who = document.querySelector('#page-home .wiki-bio');
+   if (who) who.innerHTML = WHO_I_AM_HTML;
+ }
+
+ function renderGallery() {
+   const gallery = document.querySelector('#page-hobbies .section-title + div');
+   if (!gallery) return;
+   gallery.innerHTML = GALLERY_IMAGES.map(([src, alt]) =>
+     `<img decoding="async" src="${src}" alt="${alt}" loading="lazy" width="300" height="300" style="border-radius:.8rem;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border);display:block">`
+   ).join('');
+ }
+
+ function removePublicEmailAddresses() {
+   document.querySelectorAll('#page-contact a[href^="mailto:"], .footer-col a[href^="mailto:"]').forEach(el => el.remove());
+   document.querySelectorAll('#page-contact .contact-info-card .contact-item').forEach(item => {
+     if (item.querySelector('.fa-envelope')) item.remove();
+   });
+   const emailButton = document.querySelector('#page-contact .page-hero a[href^="mailto:"]');
+   if (emailButton) emailButton.remove();
+   const sendButton = document.querySelector('#page-contact button[onclick="sendMessage()"]');
+   if (sendButton) sendButton.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Send via WhatsApp';
+ }
+
+ function sendMessage() {
   const firstName = document.querySelector('.contact-form [data-field="firstName"]')?.value || '';
   const lastName  = document.querySelector('.contact-form [data-field="lastName"]')?.value || '';
   const email     = document.querySelector('.contact-form [data-field="email"]')?.value || '';
@@ -1089,9 +1147,10 @@ function sendMessage() {
   const message   = document.querySelector('.contact-form [data-field="message"]')?.value || '';
   const fullName  = [firstName, lastName].filter(Boolean).join(' ');
   const body = `Hi Teddy,\n\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\n\n${message}`;
-  window.open(`mailto:lumiditeddy@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Enquiry')}&body=${encodeURIComponent(body)}`, '_blank');
+   const whatsappText = `${subject || 'Portfolio Enquiry'}\n\n${body}`;
+   window.open(`https://wa.me/254716358703?text=${encodeURIComponent(whatsappText)}`, '_blank', 'noopener');
   const toast = document.getElementById('toast');
-  if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3500); }
+   if (toast) { toast.textContent = 'Opening WhatsApp...'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3500); }
 }
 
 /* ─── LANGUAGE SWITCHER ─── */
@@ -1155,6 +1214,9 @@ document.addEventListener('click', function(e) {
 
   // Inject footers
   ['home','about','portfolio','hobbies','vlog','blog','contact'].forEach(p => injectFooter('footer-'+p));
+  removePublicEmailAddresses();
+  renderWhoIAm();
+  renderGallery();
 
   // Render home page sections after DOM settles
   setTimeout(() => {
