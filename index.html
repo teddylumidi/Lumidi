@@ -748,9 +748,79 @@ function toggleAccordion(btn) {
 }
 
 /* ─── PORTFOLIO IMAGE ERROR HANDLER ─── */
+function getSafeHttpUrl(value) {
+  if (typeof value !== 'string' || !value.trim()) return null;
+  try {
+    const url = new URL(value.trim());
+    if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return null;
+    return url.href;
+  } catch (e) {
+    return null;
+  }
+}
+
+function getPortfolioPreviewUrl(value) {
+  const projectUrl = getSafeHttpUrl(value);
+  return projectUrl ? `https://image.thum.io/get/width/600/crop/400/${projectUrl}` : null;
+}
+
+function clearPortfolioImgTimer(img) {
+  if (img?._fallbackTimer) {
+    clearTimeout(img._fallbackTimer);
+    delete img._fallbackTimer;
+  }
+}
+
+function onPortfolioImgLoad(img) {
+  if (img?._previewObjectUrl) {
+    URL.revokeObjectURL(img._previewObjectUrl);
+    delete img._previewObjectUrl;
+  }
+}
+
 function onPortfolioImgErr(img) {
+  clearPortfolioImgTimer(img);
+  img?._previewController?.abort();
+  if (img?._previewObjectUrl) {
+    URL.revokeObjectURL(img._previewObjectUrl);
+    delete img._previewObjectUrl;
+  }
   const wrap = img.parentElement;
-  if (wrap) wrap.innerHTML = '<div class="screenshot-placeholder"><i class="fa fa-globe"></i></div>';
+  if (wrap) wrap.innerHTML = `<div class="screenshot-placeholder"><i class="fa fa-globe"></i><span>${t('sections.screenshotUnavail')}</span></div>`;
+}
+
+function watchPortfolioPreviews(container) {
+  container.querySelectorAll('.screenshot-img').forEach(img => {
+    const previewUrl = getSafeHttpUrl(img.dataset.previewUrl);
+    if (!previewUrl) {
+      onPortfolioImgErr(img);
+      return;
+    }
+
+    const controller = new AbortController();
+    img._previewController = controller;
+    img._fallbackTimer = setTimeout(() => controller.abort(), 6000);
+    fetch(previewUrl, { signal: controller.signal, referrerPolicy: 'no-referrer' })
+      .then(response => {
+        if (!response.ok || !response.headers.get('content-type')?.startsWith('image/')) {
+          throw new Error('Preview provider unavailable');
+        }
+        return response.blob();
+      })
+      .then(blob => {
+        if (!img.isConnected) return;
+        const objectUrl = URL.createObjectURL(blob);
+        img._previewObjectUrl = objectUrl;
+        img.src = objectUrl;
+      })
+      .catch(() => {
+        if (img.isConnected) onPortfolioImgErr(img);
+      })
+      .finally(() => {
+        clearPortfolioImgTimer(img);
+        delete img._previewController;
+      });
+  });
 }
 
 /* ─── CATEGORY LABELS ─── */
@@ -764,13 +834,13 @@ function renderPortfolio(container, limit) {
   container.className = limit ? 'portfolio-grid home-portfolio-grid' : 'portfolio-grid';
   const items = limit ? PROJECTS.slice(0, limit) : PROJECTS;
   const visitLabel = t('sections.visitSite');
-  const unavailLabel = t('sections.screenshotUnavail');
   container.innerHTML = items.map(p => {
-    const thumbUrl = p.url ? `https://image.thum.io/get/width/600/crop/400/${p.url}` : null;
+    const projectUrl = getSafeHttpUrl(p.url);
+    const thumbUrl = getPortfolioPreviewUrl(projectUrl);
     const imgHtml = thumbUrl
       ? `<div class="portfolio-screenshot">
-           <img src="${thumbUrl}" alt="${p.title}" loading="lazy" decoding="async" class="screenshot-img"
-                onerror="onPortfolioImgErr(this)" />
+           <img src="img/background.jpg" data-preview-url="${thumbUrl}" alt="${p.title}" loading="lazy" decoding="async" class="screenshot-img"
+                 onload="onPortfolioImgLoad(this)" onerror="onPortfolioImgErr(this)" referrerpolicy="no-referrer" />
          </div>`
       : `<div class="screenshot-placeholder"><i class="fa fa-folder-open"></i></div>`;
     return `<div class="portfolio-item" data-cat="${p.cat}">
@@ -782,10 +852,11 @@ function renderPortfolio(container, limit) {
         <h3 class="portfolio-card-title">${p.title}</h3>
         <p class="portfolio-card-desc">${p.summary}</p>
         <div class="tech-stack">${p.tech.map(t2=>`<span class="tech-chip">${t2}</span>`).join('')}</div>
-        ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="portfolio-visit-btn"><i class="fa fa-external-link-alt"></i> ${visitLabel}</a>` : ''}
+        ${projectUrl ? `<a href="${projectUrl}" target="_blank" rel="noopener" class="portfolio-visit-btn"><i class="fa fa-external-link-alt"></i> ${visitLabel}</a>` : ''}
       </div>
     </div>`;
   }).join('');
+  watchPortfolioPreviews(container);
 }
 
 /* Portfolio filter — event delegation */
@@ -839,8 +910,13 @@ function openBlog(i) {
 /* ─── VLOG ─── */
 let allChannelVideos = { teddylumidi: [], teddylumidimusic: [] };
 
-function renderVlogCards(videos) {
-  if (!videos || videos.length === 0) return `<div style="color:var(--grey);text-align:center;padding:2rem;grid-column:1/-1">${t('sections.loadingVideos')}</div>`;
+function renderVideoFallback(handle) {
+  const channelUrl = getYoutubeChannelUrl(handle) || 'https://www.youtube.com/@teddylumidi';
+  return `<div style="color:var(--grey);text-align:center;padding:2rem;grid-column:1/-1">${t('sections.unableVideos')} <a href="${channelUrl}" target="_blank" rel="noopener" style="color:var(--red)">${t('sections.watchYoutube')}</a></div>`;
+}
+
+function renderVlogCards(videos, handle) {
+  if (!Array.isArray(videos) || videos.length === 0) return renderVideoFallback(handle);
   return videos.map(v => `
     <div class="vlog-card" onclick="openVideoUrl('${v.url}')">
       <div class="vlog-thumb">
@@ -880,10 +956,10 @@ async function loadBothChannels(container) {
           <i class="fa-brands fa-youtube"></i> ${t('sections.subscribe')}
         </a>
       </div>
-      <div class="vlog-grid">${renderVlogCards(videos)}</div>
+      <div class="vlog-grid">${renderVlogCards(videos, ch.handle)}</div>
     </div>`;
   }
-  if (container) container.innerHTML = html || `<p style="color:var(--grey);text-align:center">${t('sections.unableVideos')} <a href="https://www.youtube.com/@teddylumidi" target="_blank" style="color:var(--red)">${t('sections.watchYoutube')}</a></p>`;
+  if (container) container.innerHTML = html || renderVideoFallback('teddylumidi');
 }
 
 const CHANNEL_IDS = {
@@ -893,36 +969,44 @@ const CHANNEL_IDS = {
 
 async function fetchChannelVideos(handle, count = 4) {
   const channelId = CHANNEL_IDS[handle];
-  const feedUrl = channelId
-    ? `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-    : `https://www.youtube.com/feeds/videos.xml?user=${handle}`;
+  const requestedCount = Number.isInteger(count) ? Math.min(Math.max(count, 1), 12) : 4;
+  if (!channelId || !/^[A-Za-z0-9_-]+$/.test(handle) || !/^[A-Za-z0-9_-]+$/.test(channelId)) return [];
+
+  const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+  const apiUrl = new URL('https://api.rss2json.com/v1/api.json');
+  apiUrl.searchParams.set('rss_url', feedUrl);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   try {
-    const resp = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data.status === 'ok' && data.items && data.items.length > 0) return parseRssItems(data.items, count);
-    }
-  } catch(e) {}
-  // Fallback placeholders
-  return Array.from({length:4}, (_,i) => ({
-    title: i===0 ? `Subscribe to @${handle}` : `Video ${i+1} from @${handle}`,
-    caption: 'Click to watch on YouTube',
-    url: `https://www.youtube.com/@${handle}/videos`,
-    thumb: 'img/background.jpg',
-    videoId: ''
-  }));
+    const resp = await fetch(apiUrl.href, { signal: controller.signal });
+    if (!resp.ok) return [];
+    const data = await resp.json();
+    if (data?.status !== 'ok' || !Array.isArray(data.items) || data.items.length === 0) return [];
+    return parseRssItems(data.items, requestedCount, handle);
+  } catch(e) {
+    return [];
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
-function parseRssItems(items, count) {
+function getYoutubeChannelUrl(handle) {
+  return CHANNEL_IDS[handle] ? `https://www.youtube.com/@${handle}/videos` : null;
+}
+
+function parseRssItems(items, count, handle) {
   return items.slice(0, count).map(item => {
     let videoId = '';
-    const src = item.link || item.guid || '';
-    const m = src.match(/[?&]v=([A-Za-z0-9_-]{11})/);
-    if (m) videoId = m[1];
+    const src = getSafeHttpUrl(item?.link) || getSafeHttpUrl(item?.guid) || '';
+    try {
+      const parsedUrl = new URL(src);
+      videoId = parsedUrl.searchParams.get('v') || parsedUrl.pathname.match(/(?:\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/)?.[1] || '';
+      if (!videoId && parsedUrl.hostname === 'youtu.be') videoId = parsedUrl.pathname.slice(1).match(/^[A-Za-z0-9_-]{11}$/)?.[0] || '';
+    } catch (e) {}
     return {
-      title: item.title || 'Video',
-      caption: (item.description||'').replace(/<[^>]+>/g,'').substring(0,100),
-      url: item.link || `https://www.youtube.com/@${item.author}`,
+      title: item?.title || 'Video',
+      caption: (item?.description||'').replace(/<[^>]+>/g,'').substring(0,100),
+      url: src || getYoutubeChannelUrl(handle),
       thumb: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 'img/background.jpg',
       videoId
     };
@@ -963,8 +1047,17 @@ async function loadChannelThumbsSection() {
 }
 
 function getEmbedUrl(url) {
-  const m = url.match(/(?:youtu\.be\/|v=)([A-Za-z0-9_-]{11})/);
-  return m ? `https://www.youtube.com/embed/${m[1]}?autoplay=1` : null;
+  const safeUrl = getSafeHttpUrl(url);
+  if (!safeUrl) return null;
+  try {
+    const parsedUrl = new URL(safeUrl);
+    const videoId = parsedUrl.searchParams.get('v')
+      || parsedUrl.pathname.match(/(?:\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/)?.[1]
+      || (parsedUrl.hostname === 'youtu.be' ? parsedUrl.pathname.slice(1).match(/^[A-Za-z0-9_-]{11}$/)?.[0] : '');
+    return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : null;
+  } catch (e) {
+    return null;
+  }
 }
 
 function openVideoUrl(url) {
@@ -1068,7 +1161,7 @@ document.addEventListener('click', function(e) {
     if (homeVlog) {
       homeVlog.innerHTML = `<div style="color:var(--grey);text-align:center;padding:2rem"><i class="fa fa-spinner fa-spin"></i> ${t('sections.loadingVideos')}</div>`;
       fetchChannelVideos('teddylumidi', 4).then(videos => {
-        homeVlog.innerHTML = '<div class="vlog-grid">' + renderVlogCards(videos) + '</div>';
+        homeVlog.innerHTML = '<div class="vlog-grid">' + renderVlogCards(videos, 'teddylumidi') + '</div>';
       }).catch(() => {
         homeVlog.innerHTML = `<div style="color:var(--grey);text-align:center;padding:2rem">${t('sections.unableVideos')} <a href="https://www.youtube.com/@teddylumidi" target="_blank" style="color:var(--red)">${t('sections.watchYoutube')}</a></div>`;
       });
