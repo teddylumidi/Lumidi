@@ -1,57 +1,72 @@
-# lumidi
-# Referral Link Site
+# Teddy Lumidi — Portfolio
 
-Welcome to the Referral Link Site! This platform allows you to discover and share referral links to get paid deals and discounts. Earn rewards by inviting others to sign up using your referral links.
+Personal portfolio of **Teddy Lumidi**, full stack developer, designer, I.T support specialist and analyst based in Kisumu, Kenya.
 
-## Table of Contents
+**Live site:** https://teddylumidi.github.io/Lumidi/
 
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+## What's on the site
 
-## Getting Started
+| Page | URL | Contents |
+|---|---|---|
+| Home | `#home` | Intro, who I am, core competencies, featured websites, latest blog posts, latest vlog |
+| About | `#about` | Profile, skills, experience timeline, education, role details |
+| Portfolio | `#portfolio` | Live client websites with screenshots and links |
+| Hobbies | `#hobbies` | Interests and a photo gallery with a full-screen viewer |
+| Vlog | `#vlog` | Both YouTube channels with an embedded player of the latest uploads |
+| Blog | `#blog`, `#blog/<post>` | Articles, filterable by category; each post has its own link |
+| Contact | `#contact` | WhatsApp, phone, and a form that opens WhatsApp with the message ready |
 
-To get started with the Referral Link Site, follow these steps:
+### Featured websites
 
-1. Sign up for an account on our platform to gain access to referral links.
-2. Browse through the available referral links to various products and services.
-3. Click on a referral link to get redirected to the corresponding deal or discount.
-4. Sign up for the product or service using the referral link to enjoy the benefits.
-5. Start earning rewards for each successful referral!
+- [Wahito Musonge & Company Advocates LLP](https://wahitomusongeadvocates.co.ke/)
+- [Kanya Interior](https://kanyainterior.co.ke/)
+- [Remax Safaris](https://remaxsafaris.com/)
+- [The Lonah Maiko Foundation](https://thelonahmaikofoundation.com/)
+- [Mwalali Homes](https://mwalalihomes.co.ke/)
+- [Donovan's Heavy Metal Recycling](https://donovansheavymetalrecycling.ca/)
 
-## Usage
+## How it's built
 
-### Submitting Referral Links
+A static site with no build step, hosted on GitHub Pages from the `main` branch.
 
-You can contribute to the Referral Link Site by submitting your own referral links. By doing so, you expand the selection of available deals and discounts. To contribute, please follow these guidelines:
+```
+index.html          all pages (shown one at a time by the URL hash)
+assets/site.css     styles (theme colours at the top)
+assets/site.js      navigation, rendering, gallery, video player, contact form
+assets/content.js   projects, blog posts, gallery list, YouTube channels
+img/                photos; img/projects/ = site screenshots, img/gallery/ = gallery thumbnails
+server.js           optional Node server for local/Replit preview (adds /api/youtube)
+```
 
-1. Fork this repository and clone it to your local machine.
-2. Add your referral link(s) to the appropriate category or create a new one if necessary.
-3. Ensure that your referral link is valid and provides a benefit to the users.
-4. Commit your changes and push them to your forked repository.
-5. Submit a pull request to merge your changes into the main repository.
+Fonts: Josefin Sans and Playfair Display (Google Fonts). Icons: Font Awesome 6.
 
-### Browsing and Searching Referral Links
+## Editing content
 
-Discover referral links by browsing through categories to find deals for specific products or services. Additionally, you can use the search function to quickly find referral links by keywords or tags.
+Everything that changes often is in `assets/content.js`:
 
-### Sharing Referral Links
+- **Add a website to the portfolio:** add an entry at the top of `projects` with `title`, `summary`, `tech`, `url`, and a 1280×720 screenshot saved as `img/projects/<name>.webp`.
+- **Add a blog post:** add an entry to `posts` with a unique `slug`, `title`, `cat` (`personal`, `career`, `web`, `tech` or `marketing`), `date`, `excerpt`, `img` and `body` (HTML). Category filters appear automatically for categories that have posts.
+- **Add a gallery photo:** put the photo in `img/`, add it to `gallery` with a short description, then run `npm run images` to create its thumbnail.
 
-Feel free to share referral links from the Referral Link Site with your friends, family, and social media followers. The more people who use your referral links, the more rewards you can earn!
+Text on the About, Hobbies and Contact pages is edited directly in `index.html`.
 
-## Contributing
+## Run locally
 
-Contributions to the Referral Link Site are highly appreciated! If you have any ideas, suggestions, bug reports, or would like to contribute code, please follow these steps:
+```bash
+npm install
+npm start        # http://localhost:5000
+```
 
-1. Fork this repository and clone it to your local machine.
-2. Create a new branch for your contribution.
-3. Make your changes, following the project's coding conventions and guidelines.
-4. Test your changes thoroughly.
-5. Commit your changes and push them to your forked repository.
-6. Submit a pull request, providing a clear explanation of the purpose and details of your contribution.
+Or open `index.html` through any static server. With the Node server running, the vlog shows the latest videos as cards (from `/api/youtube`); on GitHub Pages it shows each channel's uploads playlist player instead.
 
-## License
+## Deploying
 
-This project is licensed under the [MIT License](LICENSE). By using our referral link site, you agree to the terms and conditions of this license, including the disclaimer of liability and warranties.
+Push to `main`. GitHub Pages publishes the repository root. The `.nojekyll` file tells Pages to serve the files as they are.
 
+## Legacy pages
+
+`aboutme.html`, `howitworks.html`, `referrallink.html` and `rewards.html` (with `styles.css`) are from the earlier referral-link version of this site. They are no longer linked from the portfolio.
+
+## Licence
+
+MIT

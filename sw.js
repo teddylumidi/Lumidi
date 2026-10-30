@@ -1,68 +1,14 @@
-// Service Worker — lumidi-v7
-const CACHE = 'lumidi-v7';
-const STATIC_ASSETS = [
-  '/img/background.webp',
-  '/img/background-m.webp',
-  '/img/avatar.webp',
-  '/img/aboutme-card.webp',
-  '/img/aboutme-m.webp',
-  '/img/projects/kanya-interior.webp',
-  '/img/projects/remax-safaris.webp',
-  '/img/projects/lonah-maiko-foundation.webp',
-  '/img/projects/mwalali-homes.webp',
-  '/img/projects/donovans-heavy-metal-recycling.webp',
-];
-
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(STATIC_ASSETS)).then(() => self.skipWaiting())
-  );
-});
-
-self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener('fetch', e => {
-  const url = new URL(e.request.url);
-
-  // Always fetch HTML fresh from network (never serve stale index.html)
-  if (e.request.destination === 'document' || url.pathname === '/' || url.pathname.endsWith('.html')) {
-    e.respondWith(
-      fetch(e.request).then(res => {
-        const clone = res.clone();
-        caches.open(CACHE).then(c => c.put(e.request, clone));
-        return res;
-      }).catch(() => caches.match(e.request))
-    );
-    return;
-  }
-
-  // External resources — network first, cache fallback
-  if (url.origin !== location.origin) {
-    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-    return;
-  }
-
-  // Dynamic feeds and generated project previews must stay fresh.
-  if (url.pathname.startsWith('/api/')) {
-    e.respondWith(fetch(e.request));
-    return;
-  }
-
-  // Same-origin static assets (images, CSS, JS) — cache first
-  e.respondWith(
-    caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(res => {
-        if (!res || res.status !== 200 || res.type !== 'basic') return res;
-        caches.open(CACHE).then(c => c.put(e.request, res.clone()));
-        return res;
-      });
-    })
-  );
+// Retired service worker.
+// Earlier versions cached images "cache-first" and pre-cached paths that do
+// not exist under /Lumidi/, so visitors could see stale or broken files.
+// This version removes all caches and unregisters itself.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((k) => caches.delete(k)));
+    await self.registration.unregister();
+    const clients = await self.clients.matchAll({ type: 'window' });
+    clients.forEach((client) => client.navigate(client.url));
+  })());
 });

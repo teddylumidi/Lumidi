@@ -16,5 +16,6 @@ preview is configured for port `5000`.
 
 The server exposes `GET /api/health`, which returns a JSON status response.
 
-No application secrets or external services are required by the current
-static site.
+No application secrets are required. The live site is static (GitHub Pages);
+this server only adds `/api/youtube` so the vlog shows video cards locally.
+See README.md for the file layout and how to edit content.

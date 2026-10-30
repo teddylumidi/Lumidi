@@ -1,22 +1,22 @@
 {
-  "name": "teddy-lumidi-referral-site",
+  "name": "teddy-lumidi-portfolio",
   "version": "1.0.0",
-  "description": "Teddy Lumidi Referral Ambassador Website",
+  "description": "Teddy Lumidi portfolio website",
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "echo 'Static assets ready'",
-    "start": "node server.js"
+    "start": "node server.js",
+    "images": "node scripts/gallery-thumbs.js"
   },
   "keywords": [
-    "referral",
-    "ambassador",
-    "website"
+    "portfolio",
+    "web developer",
+    "kenya"
   ],
   "author": "Teddy Lumidi",
   "license": "MIT",
   "devDependencies": {
-    "serve": "^14.2.1"
+    "sharp": "^0.35.5"
   },
   "dependencies": {
     "express": "^5.2.1"
