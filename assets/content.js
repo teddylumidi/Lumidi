@@ -30,6 +30,7 @@ window.SITE = {
       "tech": [
         "React",
         "Vite",
+        "Vercel",
         "SEO"
       ],
       "preview": "img/projects/wahito-musonge-advocates.webp",
@@ -40,8 +41,9 @@ window.SITE = {
       "title": "Kanya Interior",
       "summary": "Interior design and renovation website with a filterable project portfolio, services, and a WhatsApp quote form for a Nairobi fit-out company.",
       "tech": [
-        "Web Design",
-        "Responsive UI",
+        "HTML & CSS",
+        "JavaScript",
+        "Netlify",
         "SEO"
       ],
       "preview": "img/projects/kanya-interior.webp",
@@ -52,8 +54,9 @@ window.SITE = {
       "title": "Remax Safaris",
       "summary": "Safari travel website presenting memorable Kenyan experiences, destinations, and booking-focused content.",
       "tech": [
-        "Web Design",
-        "UX",
+        "React",
+        "Vite",
+        "Netlify",
         "SEO"
       ],
       "preview": "img/projects/remax-safaris.webp",
@@ -64,8 +67,9 @@ window.SITE = {
       "title": "The Lonah Maiko Foundation",
       "summary": "Non-profit organisation website supporting community development, impact storytelling, and outreach.",
       "tech": [
-        "Web Design",
-        "Responsive UI",
+        "HTML & CSS",
+        "JavaScript",
+        "Netlify",
         "SEO"
       ],
       "preview": "img/projects/lonah-maiko-foundation.webp",
@@ -76,9 +80,9 @@ window.SITE = {
       "title": "Mwalali Homes",
       "summary": "Real estate website showcasing property listings and housing solutions for buyers and homeowners in Kenya.",
       "tech": [
-        "Web Design",
-        "Responsive UI",
-        "CSS"
+        "React",
+        "Vite",
+        "Netlify"
       ],
       "preview": "img/projects/mwalali-homes.webp",
       "url": "https://mwalalihomes.co.ke/"
@@ -88,9 +92,9 @@ window.SITE = {
       "title": "Donovan's Heavy Metal Recycling",
       "summary": "Industrial recycling website for a Canadian metal recovery and responsible material processing business.",
       "tech": [
-        "Web Design",
-        "Responsive UI",
-        "Content"
+        "HTML & CSS",
+        "Tailwind CSS",
+        "Cloudflare"
       ],
       "preview": "img/projects/donovans-heavy-metal-recycling.webp",
       "url": "https://donovansheavymetalrecycling.ca/"
