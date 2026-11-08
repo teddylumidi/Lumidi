@@ -64,8 +64,8 @@ window.SITE = {
       "title": "The Lonah Maiko Foundation",
       "summary": "Non-profit organisation website supporting community development, impact storytelling, and outreach.",
       "tech": [
-        "WordPress",
         "Web Design",
+        "Responsive UI",
         "SEO"
       ],
       "preview": "img/projects/lonah-maiko-foundation.webp",
@@ -76,8 +76,8 @@ window.SITE = {
       "title": "Mwalali Homes",
       "summary": "Real estate website showcasing property listings and housing solutions for buyers and homeowners in Kenya.",
       "tech": [
-        "WordPress",
-        "Elementor",
+        "Web Design",
+        "Responsive UI",
         "CSS"
       ],
       "preview": "img/projects/mwalali-homes.webp",
