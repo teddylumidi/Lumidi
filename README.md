@@ -8,12 +8,12 @@ Personal portfolio of **Teddy Lumidi**, full stack developer, designer, I.T supp
 
 | Page | URL | Contents |
 |---|---|---|
-| Home | `#home` | Intro, who I am, core competencies, featured websites, latest blog posts, latest vlog |
-| About | `#about` | Profile, skills, experience timeline, education, role details |
-| Portfolio | `#portfolio` | Live client websites with screenshots and links |
-| Hobbies | `#hobbies` | Interests and a photo gallery with a full-screen viewer |
-| Vlog | `#vlog` | Both YouTube channels with an embedded player of the latest uploads |
+| Home | `#home` | Hero with key stats, featured work, who I am, competencies, experience at a glance, latest blog posts and vlog |
+| Portfolio | `#portfolio` | Live client websites with screenshots, links and a technology filter |
+| About | `#about` | Profile, experience timeline, role details, skills, education, certifications |
 | Blog | `#blog`, `#blog/<post>` | Articles, filterable by category; each post has its own link |
+| Vlog | `#vlog` | Both YouTube channels with an embedded player of the latest uploads |
+| Hobbies | `#hobbies` | Interests and a photo gallery with a full-screen viewer |
 | Contact | `#contact` | WhatsApp, phone, and a form that opens WhatsApp with the message ready |
 
 ### Featured websites

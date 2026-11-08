@@ -89,8 +89,8 @@
   window.addEventListener('hashchange', route);
 
   /* ── Projects ───────────────────────────────────────────── */
-  function projectCard(p) {
-    return '<article class="card">' +
+  function projectCard(p, i, featured) {
+    return '<article class="card' + (featured && i === 0 ? ' card-feature' : '') + '" data-tech="' + esc(p.tech.join('|')) + '">' +
       '<a class="card-media" href="' + esc(p.url) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' +
         '<img src="' + esc(p.preview) + '" alt="" width="1280" height="720" loading="lazy" decoding="async"></a>' +
       '<div class="card-body">' +
@@ -104,8 +104,33 @@
   $$('[data-projects]').forEach(function (el) {
     var n = el.dataset.projects;
     var list = n === 'all' ? SITE.projects : SITE.projects.slice(0, Number(n));
-    el.innerHTML = list.map(projectCard).join('');
+    var featured = el.classList.contains('work-grid');
+    el.innerHTML = list.map(function (p, i) { return projectCard(p, i, featured); }).join('');
   });
+  $$('[data-count="projects"]').forEach(function (el) { el.textContent = SITE.projects.length; });
+
+  // Portfolio filter by technology (only tags used by more than one project)
+  var projFilters = $('#project-filters');
+  if (projFilters) {
+    var techCount = {};
+    SITE.projects.forEach(function (p) { p.tech.forEach(function (t) { techCount[t] = (techCount[t] || 0) + 1; }); });
+    var techs = Object.keys(techCount).filter(function (t) { return techCount[t] > 1; })
+      .sort(function (a, b) { return techCount[b] - techCount[a]; });
+    if (techs.length) {
+      projFilters.innerHTML = '<button type="button" class="filter-btn" data-tech="all" aria-pressed="true">All<span class="count">' + SITE.projects.length + '</span></button>' +
+        techs.map(function (t) { return '<button type="button" class="filter-btn" data-tech="' + esc(t) + '" aria-pressed="false">' + esc(t) + '<span class="count">' + techCount[t] + '</span></button>'; }).join('');
+      projFilters.addEventListener('click', function (e) {
+        var btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        $$('.filter-btn', projFilters).forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        $$('[data-projects="all"] .card').forEach(function (card) {
+          card.hidden = !(btn.dataset.tech === 'all' || card.dataset.tech.split('|').indexOf(btn.dataset.tech) !== -1);
+        });
+      });
+    } else {
+      projFilters.hidden = true;
+    }
+  }
 
   /* ── Blog ───────────────────────────────────────────────── */
   var CAT_LABELS = { personal: 'Personal', career: 'Career', web: 'Web Dev', tech: 'Technology', marketing: 'Marketing', business: 'Business' };

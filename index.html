@@ -53,25 +53,27 @@
     <a class="brand" href="#home" data-page="home">Teddy <span>Lumidi</span></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#home" data-page="home">Home</a>
-      <a href="#about" data-page="about">About Me</a>
       <a href="#portfolio" data-page="portfolio">Portfolio</a>
-      <a href="#hobbies" data-page="hobbies">Hobbies</a>
-      <a href="#vlog" data-page="vlog">Vlog</a>
+      <a href="#about" data-page="about">About Me</a>
       <a href="#blog" data-page="blog">Blog</a>
+      <a href="#vlog" data-page="vlog">Vlog</a>
+      <a href="#hobbies" data-page="hobbies">Hobbies</a>
       <a href="#contact" data-page="contact">Contact</a>
     </nav>
+    <a class="btn btn-primary nav-cta" href="#contact"><i class="fa fa-paper-plane" aria-hidden="true"></i> Hire Me</a>
     <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </header>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
     <a href="#home" data-page="home">Home</a>
-    <a href="#about" data-page="about">About Me</a>
     <a href="#portfolio" data-page="portfolio">Portfolio</a>
-    <a href="#hobbies" data-page="hobbies">Hobbies</a>
-    <a href="#vlog" data-page="vlog">Vlog</a>
+    <a href="#about" data-page="about">About Me</a>
     <a href="#blog" data-page="blog">Blog</a>
+    <a href="#vlog" data-page="vlog">Vlog</a>
+    <a href="#hobbies" data-page="hobbies">Hobbies</a>
     <a href="#contact" data-page="contact">Contact</a>
+    <a class="btn btn-primary" href="assets/Teddy-Lumidi-CV.pdf" download="Teddy-Lumidi-CV.pdf"><i class="fa fa-file-arrow-down" aria-hidden="true"></i> Download CV</a>
   </nav>
 
   <main id="main" tabindex="-1">
@@ -82,14 +84,19 @@
       <p class="hero-badge">Available for freelance &amp; remote work</p>
       <h1>Teddy <span>Lumidi</span></h1>
       <p class="tagline">Web | <span>Design</span> | I.T Support | <span>Analyst</span></p>
-      <p class="intro">I am a full stack developer delivering splendid I.T solutions and related services across the globe. I combine industry best practices with technology expertise and business domain knowledge to drive digital transformation.</p>
+      <p class="intro">I am a full stack developer delivering I.T solutions and related services across the globe. I combine industry best practices with technology expertise and business domain knowledge to drive digital transformation.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="#portfolio"><i class="fa fa-folder-open" aria-hidden="true"></i> View Portfolio</a>
-        <a class="btn btn-outline" href="#blog"><i class="fa fa-pen-nib" aria-hidden="true"></i> Read Blog</a>
-        <a class="btn btn-outline" href="#vlog"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch Vlog</a>
-        <a class="btn btn-primary" href="#contact"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact Me</a>
+        <a class="btn btn-primary" href="#portfolio"><i class="fa fa-folder-open" aria-hidden="true"></i> View My Work</a>
+        <a class="btn btn-outline" href="assets/Teddy-Lumidi-CV.pdf" download="Teddy-Lumidi-CV.pdf"><i class="fa fa-file-arrow-down" aria-hidden="true"></i> Download CV</a>
+        <a class="btn btn-outline" href="#contact"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact Me</a>
       </div>
-      <a class="scroll-hint" href="#who" data-scroll aria-label="Scroll down"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+      <ul class="hero-stats" aria-label="At a glance">
+        <li><strong>2018</strong><span>Building for clients since</span></li>
+        <li><strong data-count="projects">6</strong><span>Live client websites</span></li>
+        <li><strong>2</strong><span>YouTube channels</span></li>
+        <li><strong>KE <i class="fa fa-globe-africa" aria-hidden="true"></i></strong><span>Kisumu-based, working remotely</span></li>
+      </ul>
+      <a class="scroll-hint" href="#work" data-scroll aria-label="Scroll down"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
     </section>
 
     <div class="featured-strip">
@@ -103,11 +110,20 @@
       </ul>
     </div>
 
+    <section id="work">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title left"><p class="label">Selected Work</p><h2>Featured <span class="text-red">Websites</span></h2><div class="divider"></div></div>
+          <a class="btn btn-outline" href="#portfolio">All Projects <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="work-grid" data-projects="3"></div>
+      </div>
+    </section>
+
     <section class="bg-alt" id="who">
       <div class="container about-layout">
         <div class="avatar-col">
           <img src="img/aboutme-card.webp" alt="Teddy Lumidi" width="320" height="320" loading="lazy" decoding="async">
-          <a class="btn btn-outline" href="#about"><i class="fa fa-user" aria-hidden="true"></i> More About Me</a>
         </div>
         <div>
           <div class="section-title left">
@@ -122,6 +138,7 @@
           </div>
           <div class="actions" style="justify-content:flex-start;margin-top:1.25rem">
             <a class="btn btn-primary" href="assets/Teddy-Lumidi-CV.pdf" download="Teddy-Lumidi-CV.pdf" target="_blank" rel="noopener"><i class="fa fa-file-arrow-down" aria-hidden="true"></i> Download My CV</a>
+            <a class="btn btn-outline" href="#about"><i class="fa fa-user" aria-hidden="true"></i> More About Me</a>
           </div>
         </div>
       </div>
@@ -129,44 +146,54 @@
 
     <section>
       <div class="container">
-        <div class="section-title"><p class="label">What I Offer</p><h2>Core <span class="text-red">Competencies</span></h2><div class="divider"></div></div>
+        <div class="section-title"><p class="label">What I Offer</p><h2>Core <span class="text-red">Competencies</span></h2><div class="divider"></div><p>Pick a service to start a conversation.</p></div>
         <div class="skills-grid">
-          <div class="skill-badge"><i class="fa fa-laptop-code" aria-hidden="true"></i><span>Web Development</span></div>
-          <div class="skill-badge"><i class="fa fa-paint-brush" aria-hidden="true"></i><span>Graphic Design</span></div>
-          <div class="skill-badge"><i class="fa fa-tools" aria-hidden="true"></i><span>I.T Support</span></div>
-          <div class="skill-badge"><i class="fa fa-chart-line" aria-hidden="true"></i><span>Business Analysis</span></div>
-          <div class="skill-badge"><i class="fa fa-bullhorn" aria-hidden="true"></i><span>Digital Marketing</span></div>
-          <div class="skill-badge"><i class="fa fa-video" aria-hidden="true"></i><span>Video Editing</span></div>
-          <div class="skill-badge"><i class="fa fa-cloud" aria-hidden="true"></i><span>Cloud Computing</span></div>
-          <div class="skill-badge"><i class="fa fa-database" aria-hidden="true"></i><span>Content Management</span></div>
+          <a class="skill-badge" href="#contact" data-subject="Freelance Web Development"><i class="fa fa-laptop-code" aria-hidden="true"></i><span>Web Development</span></a>
+          <a class="skill-badge" href="#contact" data-subject="Web Design"><i class="fa fa-paint-brush" aria-hidden="true"></i><span>Graphic Design</span></a>
+          <a class="skill-badge" href="#contact" data-subject="I.T Support / Consulting"><i class="fa fa-tools" aria-hidden="true"></i><span>I.T Support</span></a>
+          <a class="skill-badge" href="#contact" data-subject="Business / Data Analysis"><i class="fa fa-chart-line" aria-hidden="true"></i><span>Business Analysis</span></a>
+          <a class="skill-badge" href="#contact" data-subject="Digital Marketing"><i class="fa fa-bullhorn" aria-hidden="true"></i><span>Digital Marketing</span></a>
+          <a class="skill-badge" href="#contact" data-subject="Video Production / Editing"><i class="fa fa-video" aria-hidden="true"></i><span>Video Editing</span></a>
+          <a class="skill-badge" href="#contact" data-subject="Other"><i class="fa fa-cloud" aria-hidden="true"></i><span>Cloud Computing</span></a>
+          <a class="skill-badge" href="#contact" data-subject="Freelance Web Development"><i class="fa fa-database" aria-hidden="true"></i><span>Content Management</span></a>
         </div>
       </div>
     </section>
 
     <section class="bg-alt">
       <div class="container">
-        <div class="section-title"><p class="label">My Work</p><h2>Featured <span class="text-red">Websites</span></h2><div class="divider"></div></div>
-        <div class="grid-3" data-projects="3"></div>
-        <div class="actions"><a class="btn btn-primary" href="#portfolio">View All Projects <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="section-head">
+          <div class="section-title left"><p class="label">Career Journey</p><h2>Experience <span class="text-red">at a Glance</span></h2><div class="divider"></div></div>
+          <a class="btn btn-outline" href="#about">Full Experience <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="exp-grid">
+          <article class="exp-card"><p class="tl-period">Current &middot; Remote</p><h3>Digital Marketing &amp; Web Specialist</h3><p class="org">Donovan Masonry &middot; Ottawa, Canada</p><p>Runs Google Ads, SEO, the website and the Facebook page for an established masonry contractor.</p></article>
+          <article class="exp-card"><p class="tl-period">May 2022 – Present</p><h3>Web Developer</h3><p class="org">Shivakalabs</p><p>Full stack web development, front-end and back-end, plus digital marketing for client businesses.</p></article>
+          <article class="exp-card"><p class="tl-period">May 2018 – May 2022</p><h3>Director</h3><p class="org">Olulabs Technologies</p><p>Led technology strategy, web development and digital marketing for a growing digital services firm.</p></article>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="section-title"><p class="label">Insights &amp; Ideas</p><h2>Latest <span class="text-red">Blog Posts</span></h2><div class="divider"></div></div>
+        <div class="section-head">
+          <div class="section-title left"><p class="label">Insights &amp; Ideas</p><h2>Latest <span class="text-red">Blog Posts</span></h2><div class="divider"></div></div>
+          <a class="btn btn-outline" href="#blog">All Articles <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
         <div class="grid-3" data-posts="3"></div>
-        <div class="actions"><a class="btn btn-outline" href="#blog">View All Articles <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
       </div>
     </section>
 
     <section class="bg-alt">
       <div class="container">
-        <div class="section-title"><p class="label">Watch &amp; Learn</p><h2>Latest <span class="text-red">Vlog</span></h2><div class="divider"></div></div>
-        <div style="max-width:820px;margin:0 auto" data-channel="teddylumidi" data-compact></div>
-        <div class="actions">
-          <a class="btn btn-primary" href="#vlog">Watch More <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn-outline" href="https://www.youtube.com/@teddylumidi?sub_confirmation=1" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" aria-hidden="true"></i> Subscribe</a>
+        <div class="section-head">
+          <div class="section-title left"><p class="label">Watch &amp; Learn</p><h2>Latest <span class="text-red">Vlog</span></h2><div class="divider"></div></div>
+          <div class="actions" style="margin-top:0">
+            <a class="btn btn-outline" href="#vlog">Watch More <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn yt-sub" href="https://www.youtube.com/@teddylumidi?sub_confirmation=1" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" aria-hidden="true"></i> Subscribe</a>
+          </div>
         </div>
+        <div style="max-width:900px;margin:0 auto" data-channel="teddylumidi" data-compact></div>
       </div>
     </section>
 
@@ -174,7 +201,10 @@
       <div class="cta-band">
         <h2>Have a project in mind? Let's <span class="text-red">collaborate!</span></h2>
         <p>Whether it's freelance work, consulting, remote projects, or technical support — I'm open to new opportunities.</p>
-        <a class="btn btn-primary" href="#contact"><i class="fa fa-paper-plane" aria-hidden="true"></i> Get In Touch</a>
+        <div class="actions" style="margin-top:0">
+          <a class="btn btn-primary" href="#contact"><i class="fa fa-paper-plane" aria-hidden="true"></i> Get In Touch</a>
+          <a class="btn btn-wa" href="https://wa.me/254716358703" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Me</a>
+        </div>
       </div>
     </section>
   </div>
@@ -201,6 +231,46 @@
             <p>Lumidi holds a Diploma in Information Technology from The Kisumu National Polytechnic and has pursued additional professional development through certifications in web development, cloud computing, Git/GitHub, digital marketing, and Python-based application development from organisations including IBM, Google, Coursera, LinkedIn, and other digital learning platforms.</p>
             <p>His professional profile is defined by the intersection of technical expertise and business understanding, with a focus on delivering practical digital solutions, improving customer experience, and helping organisations adapt to modern technology demands.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title"><p class="label">Career Journey</p><h2>Professional <span class="text-red">Experience</span></h2><div class="divider"></div></div>
+        <div class="timeline">
+          <div class="tl-item"><p class="tl-period">Current &middot; Remote</p><h3>Digital Marketing &amp; Web Specialist</h3><p class="org">Donovan Masonry, Ottawa, Canada</p>
+            <ul><li>Manages Google Ads, moving the account from a Smart campaign to a Search-only campaign for tighter control of keywords and lead quality.</li><li>Runs SEO on the WordPress site with Rank Math and keeps the Google Business Profile accurate for local search.</li><li>Maintains the website, publishes blog content, manages the Facebook page and reports results to the owner.</li></ul></div>
+          <div class="tl-item"><p class="tl-period">May 2022 – Present</p><h3>Web Developer</h3><p class="org">Shivakalabs</p>
+            <ul><li>Works as a full stack web developer handling front-end and back-end web services.</li><li>Supports digital marketing and online brand growth initiatives.</li><li>Delivers scalable digital solutions aligned with client business goals.</li></ul></div>
+          <div class="tl-item"><p class="tl-period">May 2018 – May 2022</p><h3>Director</h3><p class="org">Olulabs Technologies</p>
+            <ul><li>Led technology strategy, online operations, and digital execution.</li><li>Combined web development and digital marketing responsibilities.</li><li>Built and scaled the company's digital products and service portfolio.</li></ul></div>
+          <div class="tl-item"><p class="tl-period">2016</p><h3>Business Development Manager</h3><p class="org">Rich Science World Limited</p>
+            <ul><li>Maintained strong relations with internal and external stakeholders.</li><li>Managed existing customer relationships and supported new customer growth.</li><li>Reviewed customer feedback and reported emerging issues to management.</li></ul></div>
+          <div class="tl-item"><p class="tl-period">2013 – 2014</p><h3>Sales Manager</h3><p class="org">Rich Science World Limited</p>
+            <ul><li>Designed and implemented strategic sales plans.</li><li>Expanded the company's customer base and strengthened market presence.</li></ul></div>
+          <div class="tl-item"><p class="tl-period">Jan 2011 – Mar 2011</p><h3>I.T Intern</h3><p class="org">NHIF, Kisumu</p>
+            <ul><li>Worked in the ICT department gaining hands-on experience.</li><li>Performed hardware installation, network troubleshooting, and software setup.</li><li>Assisted with system monitoring, updates, and maintenance.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-alt">
+      <div class="container">
+        <div class="section-title"><p class="label">Deep Dive</p><h2>Role <span class="text-red">Details</span></h2><div class="divider"></div></div>
+        <div class="accordion">
+          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Digital Marketing &amp; Web Specialist – Donovan Masonry <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="accordion-body" hidden>Remote role for an Ottawa, Canada masonry contractor in business since 1977. Manages the Google Ads account within a fixed daily budget, handles technical and on-page SEO for the WordPress site, targets local searches such as "Ottawa masonry" and "chimney repair Ottawa", keeps the Google Business Profile up to date, maintains the website and Facebook page, and reports campaign results to the owner at the end of each ad period.</div></div>
+          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Full Stack Developer – Shivakalabs <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="accordion-body" hidden>Responsible for full stack web development, managing both front-end interfaces and back-end APIs. Collaborates with clients to understand requirements and translates them into robust, scalable web solutions. Also contributes to digital marketing strategy and online brand visibility for clients across multiple industries.</div></div>
+          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Director – Olulabs Technologies <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="accordion-body" hidden>Led the company's technical and digital strategy as a founding director. Oversaw web development projects, managed digital marketing campaigns, and established the company's online infrastructure. Responsible for technology decisions, client relationships, and day-to-day operations of a growing digital services firm.</div></div>
+          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Business Development Manager – Rich Science World Limited <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="accordion-body" hidden>Managed key stakeholder relationships both internally and externally. Focused on customer retention, satisfaction, and feedback management. Identified new business opportunities and reported strategic insights to senior management to inform growth decisions.</div></div>
+          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Sales Manager – Rich Science World Limited <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="accordion-body" hidden>Designed and executed strategic sales plans to drive revenue growth. Built and expanded the customer base through targeted outreach, relationship management, and market analysis. Strengthened the company's market presence across assigned territories.</div></div>
+          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">I.T Intern – NHIF, Kisumu <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="accordion-body" hidden>Three-month internship in the ICT department. Gained practical experience in ICT hardware installation and configuration, network troubleshooting, software installation and deployment, system monitoring, and routine system updates and maintenance. This foundational experience established a strong base for a career in technology.</div></div>
         </div>
       </div>
     </section>
@@ -266,24 +336,6 @@
 
     <section class="bg-alt">
       <div class="container">
-        <div class="section-title"><p class="label">Career Journey</p><h2>Professional <span class="text-red">Experience</span></h2><div class="divider"></div></div>
-        <div class="timeline">
-          <div class="tl-item"><p class="tl-period">May 2022 – Present</p><h3>Web Developer</h3><p class="org">Shivakalabs</p>
-            <ul><li>Works as a full stack web developer handling front-end and back-end web services.</li><li>Supports digital marketing and online brand growth initiatives.</li><li>Delivers scalable digital solutions aligned with client business goals.</li></ul></div>
-          <div class="tl-item"><p class="tl-period">May 2018 – May 2022</p><h3>Director</h3><p class="org">Olulabs Technologies</p>
-            <ul><li>Led technology strategy, online operations, and digital execution.</li><li>Combined web development and digital marketing responsibilities.</li><li>Built and scaled the company's digital products and service portfolio.</li></ul></div>
-          <div class="tl-item"><p class="tl-period">2016</p><h3>Business Development Manager</h3><p class="org">Rich Science World Limited</p>
-            <ul><li>Maintained strong relations with internal and external stakeholders.</li><li>Managed existing customer relationships and supported new customer growth.</li><li>Reviewed customer feedback and reported emerging issues to management.</li></ul></div>
-          <div class="tl-item"><p class="tl-period">2013 – 2014</p><h3>Sales Manager</h3><p class="org">Rich Science World Limited</p>
-            <ul><li>Designed and implemented strategic sales plans.</li><li>Expanded the company's customer base and strengthened market presence.</li></ul></div>
-          <div class="tl-item"><p class="tl-period">Jan 2011 – Mar 2011</p><h3>I.T Intern</h3><p class="org">NHIF, Kisumu</p>
-            <ul><li>Worked in the ICT department gaining hands-on experience.</li><li>Performed hardware installation, network troubleshooting, and software setup.</li><li>Assisted with system monitoring, updates, and maintenance.</li></ul></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
         <div class="section-title"><p class="label">Academic Background</p><h2>Education</h2><div class="divider"></div></div>
         <div class="timeline">
           <div class="tl-item"><p class="tl-period">2011 – 2013</p><h3>Diploma in Information Technology</h3><p class="org">The Kisumu National Polytechnic</p></div>
@@ -293,25 +345,23 @@
       </div>
     </section>
 
-    <section class="bg-alt">
+    <section>
       <div class="container">
-        <div class="section-title"><p class="label">Deep Dive</p><h2>Role <span class="text-red">Details</span></h2><div class="divider"></div></div>
-        <div class="accordion">
-          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Full Stack Developer – Shivakalabs <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
-            <div class="accordion-body" hidden>Responsible for full stack web development, managing both front-end interfaces and back-end APIs. Collaborates with clients to understand requirements and translates them into robust, scalable web solutions. Also contributes to digital marketing strategy and online brand visibility for clients across multiple industries.</div></div>
-          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Director – Olulabs Technologies <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
-            <div class="accordion-body" hidden>Led the company's technical and digital strategy as a founding director. Oversaw web development projects, managed digital marketing campaigns, and established the company's online infrastructure. Responsible for technology decisions, client relationships, and day-to-day operations of a growing digital services firm.</div></div>
-          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Business Development Manager – Rich Science World Limited <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
-            <div class="accordion-body" hidden>Managed key stakeholder relationships both internally and externally. Focused on customer retention, satisfaction, and feedback management. Identified new business opportunities and reported strategic insights to senior management to inform growth decisions.</div></div>
-          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">Sales Manager – Rich Science World Limited <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
-            <div class="accordion-body" hidden>Designed and executed strategic sales plans to drive revenue growth. Built and expanded the customer base through targeted outreach, relationship management, and market analysis. Strengthened the company's market presence across assigned territories.</div></div>
-          <div class="accordion-item"><button class="accordion-btn" type="button" aria-expanded="false">I.T Intern – NHIF, Kisumu <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
-            <div class="accordion-body" hidden>Three-month internship in the ICT department. Gained practical experience in ICT hardware installation and configuration, network troubleshooting, software installation and deployment, system monitoring, and routine system updates and maintenance. This foundational experience established a strong base for a career in technology.</div></div>
+        <div class="section-title"><p class="label">Always Learning</p><h2>Certifications &amp; <span class="text-red">Training</span></h2><div class="divider"></div></div>
+        <div class="cert-grid">
+          <div class="cert"><i class="fa-brands fa-python" aria-hidden="true"></i><span>Python for AI</span><small>Coursera</small></div>
+          <div class="cert"><i class="fa fa-code" aria-hidden="true"></i><span>Web Development (HTML, CSS, JavaScript)</span><small>IBM</small></div>
+          <div class="cert"><i class="fa fa-cloud" aria-hidden="true"></i><span>Cloud Computing and Cloud Native Applications</span><small>IBM</small></div>
+          <div class="cert"><i class="fa-brands fa-github" aria-hidden="true"></i><span>Git and GitHub</span><small>IBM</small></div>
+          <div class="cert"><i class="fa-brands fa-google" aria-hidden="true"></i><span>Digital Marketing</span><small>Google</small></div>
+          <div class="cert"><i class="fa-brands fa-linkedin" aria-hidden="true"></i><span>Web Design</span><small>LinkedIn Learning</small></div>
+          <div class="cert"><i class="fa fa-laptop" aria-hidden="true"></i><span>Ajira Digital</span><small>Kenya</small></div>
+          <div class="cert"><i class="fa fa-rocket" aria-hidden="true"></i><span>Google Hustle Academy</span><small>Google</small></div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="bg-alt">
       <div class="cta-band">
         <h2>Ready to work together?</h2>
         <p>Let's discuss how my skills and experience can drive results for your project or organisation.</p>
@@ -329,7 +379,8 @@
     </div>
     <section>
       <div class="container">
-        <div class="section-title"><p class="label">Live Projects</p><h2>Featured <span class="text-red">Websites</span></h2><div class="divider"></div><p>Click any project to visit the live site.</p></div>
+        <div class="section-title"><p class="label">Live Projects</p><h2>Featured <span class="text-red">Websites</span></h2><div class="divider"></div><p>Real websites built for real clients. Filter by technology, or click any project to visit the live site.</p></div>
+        <div class="filter-bar" id="project-filters" role="group" aria-label="Filter projects"></div>
         <div class="grid-3" data-projects="all"></div>
       </div>
     </section>
@@ -490,12 +541,13 @@
         <h2 class="footer-title">Navigation</h2>
         <ul class="footer-links">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Me</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#hobbies">Hobbies</a></li>
-          <li><a href="#vlog">Vlog</a></li>
+          <li><a href="#about">About Me</a></li>
           <li><a href="#blog">Blog</a></li>
+          <li><a href="#vlog">Vlog</a></li>
+          <li><a href="#hobbies">Hobbies</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="assets/Teddy-Lumidi-CV.pdf" download="Teddy-Lumidi-CV.pdf">Download CV</a></li>
         </ul>
       </div>
       <div>
