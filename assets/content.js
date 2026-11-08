@@ -11,6 +11,19 @@ window.SITE = {
   ],
   projects: [
     {
+      "id": "donovan-masonry",
+      "title": "Donovan Masonry",
+      "summary": "WordPress website, SEO and Google Ads for an Ottawa masonry contractor in business since 1977, built to rank for local searches and turn visitors into quote requests.",
+      "tech": [
+        "WordPress",
+        "Elementor",
+        "SEO",
+        "Google Ads"
+      ],
+      "preview": "img/projects/donovan-masonry.webp",
+      "url": "https://donovanmasonry.com/"
+    },
+    {
       "id": "wahito-musonge-advocates",
       "title": "Wahito Musonge & Company Advocates LLP",
       "summary": "Law firm website for a Kenyan advocates practice, presenting practice areas, insights and a Legal Nuggets knowledge section for businesses and individuals.",

@@ -422,3 +422,4 @@ a.contact-item:hover strong { color: var(--red); }
 .section-head .yt-sub { min-height: 46px; }
 @media (min-width: 768px) { #page-home .skills-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (min-width: 960px) { .work-grid .card-feature .card-body { flex: 0 0 auto; } }
+.work-grid .card-feature .card-media img { object-position: left top; }

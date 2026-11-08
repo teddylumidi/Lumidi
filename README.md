@@ -18,6 +18,7 @@ Personal portfolio of **Teddy Lumidi**, full stack developer, designer, I.T supp
 
 ### Featured websites
 
+- [Donovan Masonry](https://donovanmasonry.com/)
 - [Wahito Musonge & Company Advocates LLP](https://wahitomusongeadvocates.co.ke/)
 - [Kanya Interior](https://kanyainterior.co.ke/)
 - [Remax Safaris](https://remaxsafaris.com/)
